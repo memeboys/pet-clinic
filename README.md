@@ -1,92 +1,161 @@
-# vet-passport
+# WebStoreCRM
 
-Студенческий проект "Вет Паспорт"
+Привет, поздравляю с переходом на этап учебного проекта!
+На данном этапе мы будем учиться работать и коммуницировать в команде во время разработки ПО.
 
-## Getting started
+**Вы должны быть максимально самостоятельными или как минимум к этому стремиться!**
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+**Общайтесь с коллегами (в том числе и с бекенд-командой). Обсуждайте проблемы, делитесь опытом!**
+**На проекте вы должны быть максимально самостоятельными и самодостаточной боевой единицей команды!**
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Полезные ссылки:
 
-## Add your files
+Макет  - ...
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+[Документация по API](http://91.241.64.154:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config) (Swagger поддерживается командой бэкенда)
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/rozalex.frontend/vet-passport.git
-git branch -M main
-git push -uf origin main
-```
+[Документация gitlab](https://docs.gitlab.com/ee/README.html)
 
-## Integrate with your tools
+------------
 
-- [ ] [Set up project integrations](https://gitlab.com/rozalex.frontend/vet-passport/-/settings/integrations)
+### Немного о проекте
+Проект - Вет Паспорт, в котором можно вести учет здоровья, вакцин, приемов и прочего прочего для питомцев пользователей. Также развивается функционал форума, отзывов о докторах, админка.
 
-## Collaborate with your team
+### Стек технологий
+- React
+- Redux / Redux Toolkit (по необходимости)
+- Typescript
+- Formik + Yup
+- CSS Modules + SCSS
+* При необходимости и желании вы можете подключить какую-либо библиотеку в процессе выполнения какой-нибудь задачи. Главное, чтоб в проекте не было подключений однотипных библиотек, чтоб не засорять и нагружать проект.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+Скорее всего, вы еще не работали с Redux Toolkit и Typescript.
+Обязательно нужно изучить эти технологии:
+- [Необходимый минимум по Redux Toolkit и Typescript](https://gitlab.com/rozalex.frontend/vet-passport/-/blob/main/USEFUL_MATERIALS.md)
 
-## Test and Deploy
+### Как мы работаем
+Мы используем GitLab в качестве системы управления версиями.
 
-Use the built-in continuous integration in GitLab.
+[Код проекта](https://gitlab.com/rozalex.frontend/market) 
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+Кроме того, мы используем GitLab и для управления задачами. Для этого у нас есть [доска](https://gitlab.com/rozalex.frontend/vet-passport/-/boards) задач
 
-***
+- Колонка "Open" - общий список задач
 
-# Editing this README
+- Колонка "To do" - задачи, которые закреплены за определенными разработчиками и поставлены в выполнение.
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+- Колонка "In progress" - задачи над которыми в данный момент кто-то работает
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+- Колонка "Need Review" - задачи выполненые, но ожидают ревью.
 
-## Name
-Choose a self-explaining name for your project.
+- Колонка "Paused" - задачи на паузе по тем или иным причинам невозможности выполнить в данный момент времени.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+- Колонка "Closed" - задачи выполненые и прошедшие ревью.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+Если есть необходимость в реализации функционала или исправление работы уже существующего на стороне сервера - опишите суть и как видите работу со стороны клиента, и отправьте это в чат бекенд-команде ... . Вопросы, которые касаются бекенда, адресуем так же в чат бекенд-команде.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+Для того, чтобы начать работать, необходимо:
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+1. Найти назначенную задачу на доске задач.
+Открытая задача должна находиться в колонке To do и не иметь Assignee (Assignee - исполнитель).
+2. Добавиться в Assignee задачи
+3. Перенести задачу в колонку "Doing"
+4. Зайти в задачу и найти кнопку "Create merge request".
+Нажать стрелочку справа от этой кнопки и выбрать пункт "Create merge request and branch".
+Выбрать название для ветки и нажать "Create merge request".
+5. Переключиться на эту ветку локально и начать разработку
+6. Выполнить задачу, запушить изменения в созданную ветку,
+   зайти в ранее созданный Merge Request и нажать кнопку Mark as ready в его шапке
+7. Перенести задачу в колонку "Need Review"
+8. Написать об этом в общий чат и запросить ревью коллеги
+9. Ожидать проверки MR, параллельно работая над другими задачами. После проверки внести правки
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+После того, как всё будет исправлено, ваш MR будет вмержен в main, а задача перенесена в "Closed"
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+Не забывайте часто коммитить и пушить в процессе разработки, чтобы не потерять свои изменения.
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+Задача должна пройти ревью одного из членов команды и ревью лида. Кидайте в общий чат ссылку на карточку, которая требует ревью и сообщение о том, что задача ожидает ревью.
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+При проведении ревью - делитесь опытом и давайте советы коллеге, от вас не требуется "забраковать" задачу.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+После того, как всё будет исправлено, ваш MR будет вмержен в main, а задача перенесена в "Closed"
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+Если задачу по какой-то причине невозможно выполнить, перенесите ее в колонку "Paused"
+и **обязательно** напишите комментарий к задаче в карточке, в котором объясните причину, по которой
+задача оказалась в этой колонке.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+Если есть понимание того, чего не хватает на клиенте и по этой задаче нет карточки на доске - уведомите об этом лида и, при необходимости, создайте карточку сами.
 
-## License
-For open source projects, say how it is licensed.
+### Работа с git
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Мы используем [git-flow](https://nvie.com/posts/a-successful-git-branching-model/).
+Отводим ветку от `main`, решаем задачу, кидаем Merge Request в main.
+
+### Как коммитить в репозиторий?
+
+[Атомарно](https://sashasushko.tumblr.com/post/174690191358/good-commit).
+
+Один коммит - одно изменение.
+
+Один Merge Request - одна задача.
+
+Это два строгих правила, избегая которые можно превратить разработку в хаос.
+
+Ветку создаём с префиксом номера карточки задачи (если создаёте через кнопку "Create merge request and branch" - префикс уже будет вписан заранее).
+
+Пример: для задачи "#123 - добавить кнопку логина" ветка будет примерно следующая `123-add-login-button`
+
+Где `123-` - это префикс номера карточки
+
+Коммиты пишем так же с префиксом и в повелительном наклонении (что сделать)
+
+Пример: `SP-123: Add login button for registration form`
+
+Где `SP` - это префикс проекта
+
+`123` - префикс задачи
+
+Полезные ссылки по работе в команде:
+
+- https://www.conventionalcommits.org/en/v1.0.0/#summary
+- https://chris.beams.io/posts/git-commit/
+- https://www.atlassian.com/ru/git/tutorials/comparing-workflows/gitflow-workflow
+
+### Структура проекта
+
+1. Папка /app cодержит App компонент и его конфигурационные файлы. Все файлы компонентов пишутся в PascalCase формате.
+
+2. Папка /assets содержит:
+   - /images - изображения
+   - /fonts - шрифты
+   - /icons - иконки
+   - любые другие данные, необходимые для проекта, но не являющиеся кодом
+
+
+3. /types - глобальные типы. Все не глобальные типы должны храниться
+в месте их применения - в компоненте, в сервисе и т.д. Именование типов/интерфейсов пишется без использования T/I в начале/конце названия. <br> `Плохо - IProps/PropsI. Хорошо - Props`
+
+4. /typings - d.ts файлы для типизирования JS библиотек/модулей, которые не имеют
+собственных тайпингов. Прежде чем описывать такой тип, попытайтесь
+установить тайпинг через npm i @types/название_библиотеки
+
+5. /utils - вспомогательные функции, которые можно использовать по всему
+проекту. Не глобальные функции необходимо хранить в месте применения
+
+6. /hooks - хуки, которые можно использовать по всему проекту.
+Не глобальные хуки необходимо хранить в месте применения
+
+8. /components - глобальные переиспользуемые частички приложения.
+Не глобальные компоненты необходимо хранить в месте применения.
+
+   Для каждого компонента создается папка с его названием в kebab-case (my-components). Код
+   компонента описывается в файле c названием в PascalCase (MyComponents.tsx), который находится внутри этой папки.
+
+   Эта папка может содержать стили, специфические для компонента хуки, вспомогательные
+   функции и т.д.
+
+9. /pages - компоненты-страницы
+
+10. /services - полезные сервисы
+
+11. /styles - глобальные стили и переменные
