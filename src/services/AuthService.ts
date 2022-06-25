@@ -14,6 +14,14 @@ interface LoginResponse {
   role: string;
 }
 
+interface CurrentClientResponse{
+  firstname: string,
+  lastname: string,
+  avatar: string | null,
+  email: string,
+  pets: string[]
+}
+
 export default class AuthService {
   static async loginUser (username: string, password: string): Promise<AxiosResponse<LoginResponse>> {
     return axiosInstance.post('/auth', { username, password });
@@ -21,5 +29,9 @@ export default class AuthService {
 
   static async createNewUser (data: UserReg): Promise<void> {
     return axiosInstance.post('/registration', data);
+  }
+
+  static async getCurrentClient (): Promise<CurrentClientResponse> {
+    return axiosInstance.post('/client');
   }
 }
