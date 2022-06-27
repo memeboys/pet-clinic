@@ -5,16 +5,16 @@ import './AuthPage.scss';
 
 function AuthPage () {
   const validationsSchema = yup.object().shape({
-    username: yup.string().required('Username is required'),
+    email: yup.string().email('Incorrect email').required('Email is required'),
     password: yup.string().required('Password is required'),
   });
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const onSubmit = (data: { username: string, password: string }) => {};
+  const onSubmit = (data: { email: string, password: string }) => {};
 
   return (
     <div className="container">
-      <Formik initialValues={{ username: '', password: '' }} onSubmit={onSubmit} validationSchema={validationsSchema}>
+      <Formik initialValues={{ email: '', password: '' }} onSubmit={onSubmit} validationSchema={validationsSchema}>
         {({
           handleChange, handleBlur, values, isValid, dirty, touched, errors,
         }) => (
@@ -22,23 +22,32 @@ function AuthPage () {
             <div className="inner-wrapper">
               <h2 className="auth-form__title">Sign-in</h2>
               <div className="input-wrapper">
-                <label htmlFor="username">
-                  Username
+                <label htmlFor="email">
+                  Email
                   <Field
-                    id="username"
+                    id="email"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.username}
+                    value={values.email}
                     type="text"
-                    name="username"
+                    name="email"
+                    placeholder="Email"
                   />
-                  {touched.username && errors.username && <span className="input-wrapper__error">{errors.username}</span>}
+                  {touched.email && errors.email && <span className="input-wrapper__error">{errors.email}</span>}
                 </label>
               </div>
               <div className="input-wrapper">
                 <label htmlFor="password">
                   Password
-                  <Field id="password" type="password" name="password" />
+                  <Field
+                    placeholder="Password"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.password}
+                    id="password"
+                    type="password"
+                    name="password"
+                  />
                   {touched.password && errors.password && <span className="input-wrapper__error">{errors.password}</span>}
                 </label>
               </div>
