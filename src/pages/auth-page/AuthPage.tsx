@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Formik, Form, Field } from 'formik';
 import React from 'react';
 import * as yup from 'yup';
@@ -10,9 +9,8 @@ function AuthPage () {
     password: yup.string().required('Password is required'),
   });
 
-  const onSubmit = (data: { username: string, password: string }) => {
-    console.log(data);
-  };
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const onSubmit = (data: { username: string, password: string }) => {};
 
   return (
     <div className="container">
@@ -40,7 +38,7 @@ function AuthPage () {
               <div className="input-wrapper">
                 <label htmlFor="password">
                   Password
-                  <Field id="password" type="text" name="password" />
+                  <Field id="password" type="password" name="password" />
                   {touched.password && errors.password && <span className="input-wrapper__error">{errors.password}</span>}
                 </label>
               </div>
