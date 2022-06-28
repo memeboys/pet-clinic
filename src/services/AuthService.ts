@@ -23,8 +23,8 @@ interface CurrentClientResponse{
 }
 
 export default class AuthService {
-  static async loginUser (email: string, password: string): Promise<AxiosResponse<LoginResponse>> {
-    return axiosInstance.post('/auth', { email, password });
+  static async loginUser (username: string, password: string): Promise<AxiosResponse<LoginResponse>> {
+    return axiosInstance.post('/auth', { username, password });
   }
 
   static async createNewUser (data: UserReg): Promise<void> {
