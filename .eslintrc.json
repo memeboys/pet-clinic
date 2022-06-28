@@ -63,7 +63,8 @@
       "error",
       { "blankLine": "always", "prev": "*", "next": "return" }
     ],
-    "react/require-default-props":"off"
+    "react/require-default-props":"off",
+    "linebreak-style": [0, "windows"]
   },
   "settings": {
     "react": {
