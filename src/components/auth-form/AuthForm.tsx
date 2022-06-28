@@ -1,6 +1,7 @@
 import { Formik, Form, Field } from 'formik';
 import React from 'react';
 import * as yup from 'yup';
+import AuthService from '../../services/AuthService';
 import './AuthForm.scss';
 
 const AuthForm: React.FC = () => {
@@ -9,8 +10,10 @@ const AuthForm: React.FC = () => {
     password: yup.string().required('Password is required'),
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const onSubmit = (data: { email: string, password: string }) => {};
+  const onSubmit = async (data: { email: string, password: string }) => {
+    AuthService.loginUser(data.email, data.password)
+      .then((res) => localStorage.setItem('token', res.data.jwtToken));
+  };
 
   return (
     <div className="container">
