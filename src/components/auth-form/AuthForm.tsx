@@ -16,8 +16,8 @@ const AuthForm: React.FC = () => {
     setErrors: (errors: { email: string; password: string; }) => void,
   ) => {
     AuthService.loginUser(data.email, data.password)
-      .then((res) => {
-        localStorage.setItem('token', res.data.jwtToken);
+      .then(({ data: resData }) => {
+        localStorage.setItem('token', resData.jwtToken);
       })
       .catch((err) => {
         if (err.response.status === 403) {
