@@ -15,11 +15,20 @@ interface LoginResponse {
 }
 
 interface CurrentClientResponse{
-  firstname: string,
-  lastname: string,
-  avatar: string | null,
-  email: string,
-  pets: string[]
+  data: {
+    firstname: string,
+    lastname: string,
+    avatar: string,
+    email: string,
+    pets: {
+      id: number,
+      name: string,
+      avatar: string | null,
+      birthDay: string,
+      notificationCount: number,
+      petType: string
+    }[]
+  }
 }
 
 export default class AuthService {
@@ -32,6 +41,6 @@ export default class AuthService {
   }
 
   static async getCurrentClient (): Promise<CurrentClientResponse> {
-    return axiosInstance.post('/client');
+    return axiosInstance.get('/client');
   }
 }
