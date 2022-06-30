@@ -11,20 +11,30 @@ const AuthForm: React.FC = () => {
     password: yup.string().required('Password is required'),
   });
 
-  const [errorStatus, setErrorStatus] = useState(null);
-
-  const onSubmit = async (data: { email: string, password: string }) => {
+  const onSubmit = async (
+    data: { email: string, password: string },
+    setErrors: (errors: { email: string; password: string; }) => void,
+  ) => {
     AuthService.loginUser(data.email, data.password)
       .then((res) => {
         localStorage.setItem('token', res.data.jwtToken);
-        setErrorStatus(null);
       })
-      .catch((err) => setErrorStatus(err.request.status));
+      .catch((err) => {
+        if (err.response.status === 403) {
+          setErrors({ email: 'Invalid email or password', password: 'Invalid email or password' });
+        }
+      });
   };
 
   return (
     <div className="container">
-      <Formik initialValues={{ email: '', password: '' }} onSubmit={onSubmit} validationSchema={validationsSchema}>
+      <Formik
+        initialValues={{ email: '', password: '' }}
+        onSubmit={(values, { setErrors }) => {
+          onSubmit(values, setErrors);
+        }}
+        validationSchema={validationsSchema}
+      >
         {({
           handleChange, handleBlur, values, isValid, dirty, touched, errors,
         }) => (
@@ -44,7 +54,6 @@ const AuthForm: React.FC = () => {
                     placeholder="Email"
                   />
                   {touched.email && errors.email && <span className="input-wrapper__error">{errors.email}</span>}
-                  {errorStatus === 403 ? <span className="input-wrapper__error">Incorrect login or password</span> : null}
                 </label>
               </div>
               <div className="input-wrapper">
@@ -60,13 +69,13 @@ const AuthForm: React.FC = () => {
                     name="password"
                   />
                   {touched.password && errors.password && <span className="input-wrapper__error">{errors.password}</span>}
-                  {errorStatus === 403 ? <span className="input-wrapper__error">Incorrect login or password</span> : null}
                 </label>
               </div>
               <button
                 className="auth-form__btn"
                 disabled={!isValid && !dirty}
                 type="submit"
+
               >
                 Submit
               </button>
