@@ -1,9 +1,9 @@
 import React from 'react';
 import PanelList from '../panel-list/PanelList';
-import './Main.scss';
+import classes from './Main.module.scss';
 
 const Main: React.FC = () => (
-  <main className="main">
+  <main className={classes.main}>
     <PanelList />
   </main>
 );

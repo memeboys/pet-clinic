@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Collapse } from 'antd';
 import PetService from '../../services/petService';
 import AuthService from '../../services/AuthService';
-import './PanelList.scss';
+import classes from './PanelList.module.scss';
 
 const PanelList: React.FC = () => {
   const { Panel } = Collapse;
@@ -42,11 +42,11 @@ const PanelList: React.FC = () => {
 
   return (
     <Collapse>
-      <Panel className="panel" showArrow={false} header="Подробная информация" key="1">
-        <div className="panel__container">
-          <div className="panel__info">
-            <h3 className="panel__title">Информация о питомце:</h3>
-            <ul className="panel__list">
+      <Panel className={classes.panel} showArrow={false} header="Подробная информация" key="1">
+        <div className={classes.panel__container}>
+          <div className={classes.panel__info}>
+            <h3 className={classes.panel__title}>Информация о питомце:</h3>
+            <ul className={classes.panel__list}>
               <li>
                 <b>Кличка:</b>
                 {' '}
@@ -64,9 +64,9 @@ const PanelList: React.FC = () => {
               </li>
             </ul>
           </div>
-          <div className="panel__info">
-            <h3 className="panel__title">Информация о хозяине:</h3>
-            <ul className="panel__list">
+          <div className={classes.panel__info}>
+            <h3 className={classes.panel__title}>Информация о хозяине:</h3>
+            <ul className={classes.panel__list}>
               <li>
                 <b>Имя:</b>
                 {' '}
@@ -86,8 +86,8 @@ const PanelList: React.FC = () => {
           </div>
         </div>
       </Panel>
-      <Panel className="panel" showArrow={false} header="Медосмотры" key="2">
-        <div className="panel__container">
+      <Panel className={classes.panel} showArrow={false} header="Медосмотры" key="2">
+        <div className={classes.panel__container}>
           <p>
             Lorem ipsum dolor, sit amet consectetur
             adipisicing elit. Harum minima earum dignissimos sequi aspernatur,
@@ -95,8 +95,8 @@ const PanelList: React.FC = () => {
           </p>
         </div>
       </Panel>
-      <Panel className="panel" showArrow={false} header="Вакцины против бешенства" key="3">
-        <div className="panel__container">
+      <Panel className={classes.panel} showArrow={false} header="Вакцины против бешенства" key="3">
+        <div className={classes.panel__container}>
           <p>
             Lorem ipsum dolor, sit amet consectetur
             adipisicing elit. Harum minima earum dignissimos sequi aspernatur,
@@ -104,8 +104,8 @@ const PanelList: React.FC = () => {
           </p>
         </div>
       </Panel>
-      <Panel className="panel" showArrow={false} header="Другие вакцинации" key="4">
-        <div className="panel__container">
+      <Panel className={classes.panel} showArrow={false} header="Другие вакцинации" key="4">
+        <div className={classes.panel__container}>
           <p>
             Lorem ipsum dolor, sit amet consectetur
             adipisicing elit. Harum minima earum dignissimos sequi aspernatur,
@@ -113,8 +113,8 @@ const PanelList: React.FC = () => {
           </p>
         </div>
       </Panel>
-      <Panel className="panel" showArrow={false} header="Дегельминтизация" key="5">
-        <div className="panel__container">
+      <Panel className={classes.panel} showArrow={false} header="Дегельминтизация" key="5">
+        <div className={classes.panel__container}>
           <p>
             Lorem ipsum dolor, sit amet consectetur
             adipisicing elit. Harum minima earum dignissimos sequi aspernatur,
@@ -122,8 +122,8 @@ const PanelList: React.FC = () => {
           </p>
         </div>
       </Panel>
-      <Panel className="panel" showArrow={false} header="Обработка от внешних паразитов" key="6">
-        <div className="panel__container">
+      <Panel className={classes.panel} showArrow={false} header="Обработка от внешних паразитов" key="6">
+        <div className={classes.panel__container}>
           <p>
             Lorem ipsum dolor, sit amet consectetur
             adipisicing elit. Harum minima earum dignissimos sequi aspernatur,
@@ -131,8 +131,8 @@ const PanelList: React.FC = () => {
           </p>
         </div>
       </Panel>
-      <Panel className="panel" showArrow={false} header="Записи о репродукции" key="7">
-        <div className="panel__container">
+      <Panel className={classes.panel} showArrow={false} header="Записи о репродукции" key="7">
+        <div className={classes.panel__container}>
           <p>
             Lorem ipsum dolor, sit amet consectetur
             adipisicing elit. Harum minima earum dignissimos sequi aspernatur,
