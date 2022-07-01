@@ -6,7 +6,14 @@
 
   &__btns {
     display: flex;
-    gap: 1rem;
+    gap: 3rem;
     justify-content: center;
+  }
+
+  &__btn {
+    background: none;
+    color: white;
+    border: none;
+    font-weight: 600;
   }
 }
