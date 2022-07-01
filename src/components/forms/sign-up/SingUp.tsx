@@ -1,6 +1,7 @@
 import { Formik, Form, Field } from 'formik';
 import React from 'react';
 import * as yup from 'yup';
+import AuthService from '../../../services/AuthService';
 import classes from './SignUp.module.scss';
 
 function SignUp () {
@@ -8,11 +9,21 @@ function SignUp () {
     email: yup.string().email('Please enter a valid email address').required('Email is required'),
     firstname: yup.string().required('Firstname is required'),
     lastname: yup.string().required('Lastname is required'),
-    password: yup.string().required('Password is required'),
-    confirmpassword: yup.string().oneOf([yup.ref('password')], 'Passwords must match').required('Password is required'),
+    password: yup.string().test('minLenght', 'minimum of 5 characters', (val) => `${val}`.length > 4)
+      .required('Password is required'),
+    confirmPassword: yup.string().oneOf([yup.ref('password')], 'Passwords must match')
+      .test('minLenght', 'minimum of 5 characters', (val) => `${val}`.length > 4).required('Password is required'),
   });
 
-  const onSubmit = () => {};
+  const onSubmit = (data: {
+    email: string,
+    firstname: string,
+    lastname: string,
+    password: string,
+    confirmPassword: string
+  }) => {
+    AuthService.createNewUser(data);
+  };
 
   return (
     <div className="container">
@@ -22,7 +33,7 @@ function SignUp () {
           firstname: '',
           lastname: '',
           password: '',
-          confirmpassword: '',
+          confirmPassword: '',
         }}
         onSubmit={onSubmit}
         validationSchema={validationsSchema}
@@ -106,21 +117,21 @@ function SignUp () {
                 </label>
               </div>
               <div className={classes.input_wrapper}>
-                <label htmlFor="confirmpassword">
+                <label htmlFor="confirmPassword">
                   Confirm password
                   <Field
-                    id="confirmpassword"
+                    id="confirmPassword"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.confirmpassword}
+                    value={values.confirmPassword}
                     type="password"
-                    name="confirmpassword"
+                    name="confirmPassword"
                     placeholder="Confirm password"
                     className={classes.input}
                   />
-                  {touched.confirmpassword && errors.confirmpassword && (
+                  {touched.confirmPassword && errors.confirmPassword && (
                   <span className={classes.input_wrapper__error}>
-                    {errors.confirmpassword}
+                    {errors.confirmPassword}
                   </span>
                   )}
                 </label>
