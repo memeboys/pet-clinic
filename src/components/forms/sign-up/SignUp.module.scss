@@ -29,7 +29,6 @@
   border-radius: 4px;
   background: #ffffff;
   border: 1px solid #d9d9d9;
-  margin-bottom: 15px;
 
   &:focus {
       outline-color: #4889dd;
@@ -58,6 +57,7 @@ input[type="submit"] {
 
 .input_wrapper {
   width: 100%;
+  margin-bottom: 15px;
   label {
     display: flex;
     flex-direction: column;
