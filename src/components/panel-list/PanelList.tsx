@@ -3,6 +3,7 @@ import { Collapse } from 'antd';
 import PetService from '../../services/petService';
 import AuthService from '../../services/AuthService';
 import classes from './PanelList.module.scss';
+import './AntdStyle.scss';
 
 const PanelList: React.FC = () => {
   const { Panel } = Collapse;
