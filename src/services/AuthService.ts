@@ -1,17 +1,17 @@
 import { AxiosResponse } from 'axios';
-import { LoginResponseDTO, UserRegDTO, CurrentClientResponseDTO } from '../types/auth.types';
+import { AuthResponse, RegisterDto, ClientDto } from '../types/auth.types';
 import { axiosInstance } from './index';
 
 export default class AuthService {
-  static async loginUser (username: string, password: string): Promise<AxiosResponse<LoginResponseDTO>> {
+  static async loginUser (username: string, password: string): Promise<AxiosResponse<AuthResponse>> {
     return axiosInstance.post('/auth', { username, password });
   }
 
-  static async createNewUser (data: UserRegDTO): Promise<void> {
+  static async createNewUser (data: RegisterDto): Promise<void> {
     return axiosInstance.post('/registration', data);
   }
 
-  static async getCurrentClient (): Promise<CurrentClientResponseDTO> {
-    return axiosInstance.post('/client');
+  static async getCurrentClient (): Promise<ClientDto> {
+    return axiosInstance.get('/client');
   }
 }
