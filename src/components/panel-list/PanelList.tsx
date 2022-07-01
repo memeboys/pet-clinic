@@ -41,7 +41,7 @@ const PanelList: React.FC = () => {
   }, []);
 
   return (
-    <Collapse defaultActiveKey={['1']}>
+    <Collapse>
       <Panel className="panel" showArrow={false} header="Подробная информация" key="1">
         <div className="panel__container">
           <div className="panel__info">
@@ -84,6 +84,60 @@ const PanelList: React.FC = () => {
               </li>
             </ul>
           </div>
+        </div>
+      </Panel>
+      <Panel className="panel" showArrow={false} header="Медосмотры" key="2">
+        <div className="panel__container">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur
+            adipisicing elit. Harum minima earum dignissimos sequi aspernatur,
+            iure beatae ut sint non laboriosam asperiores pariatur quidem, alias enim, dolor labore tenetur. Tenetur, fuga.
+          </p>
+        </div>
+      </Panel>
+      <Panel className="panel" showArrow={false} header="Вакцины против бешенства" key="3">
+        <div className="panel__container">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur
+            adipisicing elit. Harum minima earum dignissimos sequi aspernatur,
+            iure beatae ut sint non laboriosam asperiores pariatur quidem, alias enim, dolor labore tenetur. Tenetur, fuga.
+          </p>
+        </div>
+      </Panel>
+      <Panel className="panel" showArrow={false} header="Другие вакцинации" key="4">
+        <div className="panel__container">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur
+            adipisicing elit. Harum minima earum dignissimos sequi aspernatur,
+            iure beatae ut sint non laboriosam asperiores pariatur quidem, alias enim, dolor labore tenetur. Tenetur, fuga.
+          </p>
+        </div>
+      </Panel>
+      <Panel className="panel" showArrow={false} header="Дегельминтизация" key="5">
+        <div className="panel__container">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur
+            adipisicing elit. Harum minima earum dignissimos sequi aspernatur,
+            iure beatae ut sint non laboriosam asperiores pariatur quidem, alias enim, dolor labore tenetur. Tenetur, fuga.
+          </p>
+        </div>
+      </Panel>
+      <Panel className="panel" showArrow={false} header="Обработка от внешних паразитов" key="6">
+        <div className="panel__container">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur
+            adipisicing elit. Harum minima earum dignissimos sequi aspernatur,
+            iure beatae ut sint non laboriosam asperiores pariatur quidem, alias enim, dolor labore tenetur. Tenetur, fuga.
+          </p>
+        </div>
+      </Panel>
+      <Panel className="panel" showArrow={false} header="Записи о репродукции" key="7">
+        <div className="panel__container">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur
+            adipisicing elit. Harum minima earum dignissimos sequi aspernatur,
+            iure beatae ut sint non laboriosam asperiores pariatur quidem, alias enim, dolor labore tenetur. Tenetur, fuga.
+          </p>
         </div>
       </Panel>
     </Collapse>

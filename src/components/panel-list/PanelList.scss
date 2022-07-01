@@ -1,4 +1,8 @@
 .panel {
+  background-color: #69ade7;
+  border-radius: 4px !important;
+  border: none;
+
   &__list {
     list-style: none;
     padding: 0;
@@ -14,4 +18,18 @@
     display: flex;
     justify-content: space-around;
   }
+}
+
+.ant-collapse-header-text {
+  color: white;
+}
+
+.ant-collapse {
+  border: none !important;
+}
+
+.ant-collapse-content-box {
+  border-right: 1px solid #d9d9d9;
+  border-left: 1px solid #d9d9d9;
+  border-radius: 4px;
 }
