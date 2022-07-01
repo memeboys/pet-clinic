@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
 import { axiosInstance } from './index';
 
-interface UserReg {
+export interface UserReg {
   email: string;
   firstname: string;
   lastname: string;
