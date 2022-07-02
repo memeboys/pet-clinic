@@ -35,7 +35,7 @@ const PanelList: React.FC = () => {
       });
 
     AuthService.getCurrentClient()
-      .then((data) => {
+      .then(({ data }) => {
         setClientData(data);
         setLoading((prevState) => ({ ...prevState, client: false }));
       });

@@ -21,6 +21,7 @@ export interface ClientDto {
   avatar: string,
   email: string,
   pets: PetDTO[]
+
 }
 
 export default class AuthService {
@@ -32,10 +33,7 @@ export default class AuthService {
     return axiosInstance.post('/registration', data);
   }
 
-  static async getCurrentClient (): Promise<ClientDto> {
-    const res = await axiosInstance.get('/client');
-    const { data } = res;
-
-    return data;
+  static async getCurrentClient (): Promise<AxiosResponse<ClientDto>> {
+    return axiosInstance.get('/client');
   }
 }
