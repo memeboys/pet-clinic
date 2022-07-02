@@ -3,6 +3,9 @@ import { PetDTO } from '../types/PetsTypes';
 
 export default class PetService {
   static async getPet (id: string): Promise<PetDTO> {
-    return axiosInstance.get(`/client/pet/${id}`);
+    const res = await axiosInstance.get(`/client/pet/${id}`);
+    const { data } = res;
+
+    return data;
   }
 }

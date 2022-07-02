@@ -29,17 +29,57 @@ const PanelList: React.FC = () => {
   useEffect(() => {
     setLoading({ pet: true, client: true });
     PetService.getPet(id)
-      .then(({ data }) => {
+      .then((data) => {
         setPetData(data);
         setLoading((prevState) => ({ ...prevState, pet: false }));
       });
 
     AuthService.getCurrentClient()
-      .then(({ data }) => {
+      .then((data) => {
         setClientData(data);
         setLoading((prevState) => ({ ...prevState, client: false }));
       });
   }, []);
+
+  const clientInfo = (
+    <ul className={classes.panel__list}>
+      <li>
+        <b>Имя:</b>
+        {' '}
+        {clientData.firstname}
+      </li>
+      <li>
+        <b>Фамилия:</b>
+        {' '}
+        {clientData.lastname}
+      </li>
+      <li>
+        <b>Email:</b>
+        {' '}
+        {clientData.email}
+      </li>
+    </ul>
+  );
+
+  const petInfo = (
+    <ul className={classes.panel__list}>
+      <li>
+        <b>Кличка:</b>
+        {' '}
+        {petData.name}
+      </li>
+      <li>
+        <b>Дата рождения:</b>
+        {' '}
+        {petData.birthDay}
+      </li>
+      <li>
+        <b>Вид:</b>
+        {' '}
+        {petData.petType}
+      </li>
+    </ul>
+  );
 
   return (
     <Collapse>
@@ -47,43 +87,11 @@ const PanelList: React.FC = () => {
         <div className={classes.panel__container}>
           <div className={classes.panel__info}>
             <h3 className={classes.panel__title}>Информация о питомце:</h3>
-            <ul className={classes.panel__list}>
-              <li>
-                <b>Кличка:</b>
-                {' '}
-                {petData.name}
-              </li>
-              <li>
-                <b>Дата рождения:</b>
-                {' '}
-                {petData.birthDay}
-              </li>
-              <li>
-                <b>Вид:</b>
-                {' '}
-                {petData.petType}
-              </li>
-            </ul>
+            {loading.pet ? <span>loading...</span> : petInfo}
           </div>
           <div className={classes.panel__info}>
             <h3 className={classes.panel__title}>Информация о хозяине:</h3>
-            <ul className={classes.panel__list}>
-              <li>
-                <b>Имя:</b>
-                {' '}
-                {clientData.firstname}
-              </li>
-              <li>
-                <b>Фамилия:</b>
-                {' '}
-                {clientData.lastname}
-              </li>
-              <li>
-                <b>Email:</b>
-                {' '}
-                {clientData.email}
-              </li>
-            </ul>
+            {loading.client ? <span>loading...</span> : clientInfo}
           </div>
         </div>
       </Panel>

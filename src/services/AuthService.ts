@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { axiosInstance } from './index';
+import { PetDTO } from '../types/PetsTypes';
 
 interface UserReg {
   email: string;
@@ -14,21 +15,12 @@ interface LoginResponse {
   role: string;
 }
 
-interface CurrentClientResponse{
-  data: {
-    firstname: string,
-    lastname: string,
-    avatar: string,
-    email: string,
-    pets: {
-      id: number,
-      name: string,
-      avatar: string | null,
-      birthDay: string,
-      notificationCount: number,
-      petType: string
-    }[]
-  }
+export interface ClientDto {
+  firstname: string,
+  lastname: string,
+  avatar: string,
+  email: string,
+  pets: PetDTO[]
 }
 
 export default class AuthService {
@@ -40,7 +32,10 @@ export default class AuthService {
     return axiosInstance.post('/registration', data);
   }
 
-  static async getCurrentClient (): Promise<CurrentClientResponse> {
-    return axiosInstance.get('/client');
+  static async getCurrentClient (): Promise<ClientDto> {
+    const res = await axiosInstance.get('/client');
+    const { data } = res;
+
+    return data;
   }
 }
