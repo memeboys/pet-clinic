@@ -22,7 +22,7 @@ const PanelList: React.FC = () => {
     email: '',
     pets: [{}],
   });
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   const [loading, setLoading] = useState({ pet: true, client: true });
   const id = '1'; // Позже id должен быть в props
 
