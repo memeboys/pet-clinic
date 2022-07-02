@@ -1,11 +1,9 @@
+import { AxiosResponse } from 'axios';
 import { axiosInstance } from './index';
 import { PetDTO } from '../types/PetsTypes';
 
 export default class PetService {
-  static async getPet (id: string): Promise<PetDTO> {
-    const res = await axiosInstance.get(`/client/pet/${id}`);
-    const { data } = res;
-
-    return data;
+  static async getPet (id: string): Promise<AxiosResponse<PetDTO>> {
+    return axiosInstance.get(`/client/pet/${id}`);
   }
 }

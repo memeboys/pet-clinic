@@ -29,7 +29,7 @@ const PanelList: React.FC = () => {
   useEffect(() => {
     setLoading({ pet: true, client: true });
     PetService.getPet(id)
-      .then((data) => {
+      .then(({ data }) => {
         setPetData(data);
         setLoading((prevState) => ({ ...prevState, pet: false }));
       });
