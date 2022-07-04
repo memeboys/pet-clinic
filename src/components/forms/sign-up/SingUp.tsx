@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import AuthService, { UserReg } from '../../../services/AuthService';
 import classes from './SignUp.module.scss';
 
-function SignUp () {
+function SignUp (): JSX.Element {
   const validationsSchema = yup.object().shape({
     email: yup.string().email('Please enter a valid email address').required('Email is required'),
     firstname: yup.string().required('Firstname is required'),

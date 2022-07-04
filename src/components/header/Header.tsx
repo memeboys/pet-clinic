@@ -43,9 +43,9 @@ const Header:FC = () => (
   <header className={styles.header}>
     <nav className={styles.menu}>
       <ul className={styles.menu__list}>
-        {dataMenu.map((item) => (
-          <li key={item.label} className={styles.menu__item}>
-            <Link to="/">{item}</Link>
+        {dataMenu.map(({ label, path }) => (
+          <li key={label} className={styles.menu__item}>
+            <Link to={path}>{label}</Link>
           </li>
         )) }
       </ul>
