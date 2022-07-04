@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios';
 import { axiosInstance } from './index';
 import { PetDTO } from '../types/PetsDTO';
 
-interface UserReg {
+export interface UserReg {
   email: string;
   firstname: string;
   lastname: string;
