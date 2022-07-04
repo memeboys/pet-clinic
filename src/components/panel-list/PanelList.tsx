@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Collapse } from 'antd';
-import PetService from '../../services/petService';
+import PetService from '../../services/PetService';
 import AuthService from '../../services/AuthService';
 import classes from './PanelList.module.scss';
 import './AntdStyle.scss';
