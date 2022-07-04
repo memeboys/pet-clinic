@@ -1,43 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { Collapse } from 'antd';
 import PetService from '../../services/PetService';
-import AuthService from '../../services/AuthService';
+import AuthService, { ClientDto } from '../../services/AuthService';
 import classes from './PanelList.module.scss';
 import './AntdStyle.scss';
+import { PetDTO } from '../../types/PetsDTO';
 
 const PanelList: React.FC = () => {
   const { Panel } = Collapse;
-  const [petData, setPetData] = useState({
-    id: 0,
-    name: '',
-    avatar: '',
-    birthDay: '',
-    notificationCount: 0,
-    petType: '',
-  });
-  const [clientData, setClientData] = useState({
-    firstname: '',
-    lastname: '',
-    avatar: '',
-    email: '',
-    pets: [{}],
-  });
+  const [petData, setPetData] = useState<PetDTO | null>(null);
+  const [clientData, setClientData] = useState<ClientDto | null>(null);
 
-  const [loading, setLoading] = useState({ pet: true, client: true });
   const id = '1'; // Позже id должен быть в props
 
   useEffect(() => {
-    setLoading({ pet: true, client: true });
     PetService.getPet(id)
       .then(({ data }) => {
         setPetData(data);
-        setLoading((prevState) => ({ ...prevState, pet: false }));
       });
 
     AuthService.getCurrentClient()
       .then(({ data }) => {
         setClientData(data);
-        setLoading((prevState) => ({ ...prevState, client: false }));
       });
   }, []);
 
@@ -46,17 +30,17 @@ const PanelList: React.FC = () => {
       <li>
         <b>Имя:</b>
         {' '}
-        {clientData.firstname}
+        {clientData?.firstname}
       </li>
       <li>
         <b>Фамилия:</b>
         {' '}
-        {clientData.lastname}
+        {clientData?.lastname}
       </li>
       <li>
         <b>Email:</b>
         {' '}
-        {clientData.email}
+        {clientData?.email}
       </li>
     </ul>
   );
@@ -66,17 +50,17 @@ const PanelList: React.FC = () => {
       <li>
         <b>Кличка:</b>
         {' '}
-        {petData.name}
+        {petData?.name}
       </li>
       <li>
         <b>Дата рождения:</b>
         {' '}
-        {petData.birthDay}
+        {petData?.birthDay}
       </li>
       <li>
         <b>Вид:</b>
         {' '}
-        {petData.petType}
+        {petData?.petType}
       </li>
     </ul>
   );
@@ -87,11 +71,11 @@ const PanelList: React.FC = () => {
         <div className={classes.panel__container}>
           <div className={classes.panel__info}>
             <h3 className={classes.panel__title}>Информация о питомце:</h3>
-            {loading.pet ? <span>loading...</span> : petInfo}
+            {petData === null ? <span>loading...</span> : petInfo}
           </div>
           <div className={classes.panel__info}>
             <h3 className={classes.panel__title}>Информация о хозяине:</h3>
-            {loading.client ? <span>loading...</span> : clientInfo}
+            {petData === null ? <span>loading...</span> : clientInfo}
           </div>
         </div>
       </Panel>

@@ -4,10 +4,10 @@ enum PetType {
 }
 
 export interface PetDTO {
-  id: number,
-  name: string,
-  avatar: string,
-  birthDay: string,
-  notificationCount: number,
-  petType: PetType
+  id?: number | null,
+  name?: string | null,
+  avatar?: string | null,
+  birthDay?: string | null,
+  notificationCount?: number | null,
+  petType?: PetType | null
 }

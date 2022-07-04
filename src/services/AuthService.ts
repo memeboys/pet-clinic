@@ -16,11 +16,11 @@ interface LoginResponse {
 }
 
 export interface ClientDto {
-  firstname: string,
-  lastname: string,
-  avatar: string,
-  email: string,
-  pets: PetDTO[]
+  firstname: string | null,
+  lastname: string | null,
+  avatar: string | null,
+  email: string | null,
+  pets: PetDTO[] | null
 
 }
 
