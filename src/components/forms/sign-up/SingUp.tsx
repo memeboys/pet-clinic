@@ -1,7 +1,8 @@
 import { Formik, Form, Field } from 'formik';
 import React from 'react';
 import * as yup from 'yup';
-import AuthService, { UserReg } from '../../../services/AuthService';
+import AuthService from '../../../services/AuthService';
+import { RegisterDto } from '../../../types/auth';
 import classes from './SignUp.module.scss';
 
 function SignUp () {
@@ -15,7 +16,7 @@ function SignUp () {
       .test('minLenght', 'minimum of 5 characters', (val) => `${val}`.length > 4).required('Password is required'),
   });
 
-  const onSubmit = (data: UserReg) => {
+  const onSubmit = (data: RegisterDto) => {
     AuthService.createNewUser(data);
   };
 
