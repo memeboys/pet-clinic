@@ -1,7 +1,4 @@
-enum PetType {
-  CAT = 'CAT',
-  DOG = 'DOG',
-}
+import { PetDTO } from './PetsDTO';
 
 enum Role{
   ADMIN = 'ADMIN',
@@ -33,14 +30,5 @@ export interface ClientDto{
   lastname: string,
   avatar?: string | null,
   email?: string,
-  pets: PetDto[]
-}
-
-export interface PetDto {
-  id: number,
-  name: string,
-  avatar: string,
-  birthDay: string,
-  notificationCount: number,
-  petType: PetType
+  pets: PetDTO[]
 }

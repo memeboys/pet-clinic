@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { AuthResponse, RegisterDto, ClientDto } from '../types/auth';
+import { AuthResponse, RegisterDto, ClientDto } from '../types/AuthDTO';
 import { axiosInstance } from './index';
 
 export default class AuthService {

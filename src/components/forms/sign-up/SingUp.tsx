@@ -2,7 +2,7 @@ import { Formik, Form, Field } from 'formik';
 import React from 'react';
 import * as yup from 'yup';
 import AuthService from '../../../services/AuthService';
-import { RegisterDto } from '../../../types/auth';
+import { RegisterDto } from '../../../types/AuthDTO';
 import classes from './SignUp.module.scss';
 
 function SignUp () {
