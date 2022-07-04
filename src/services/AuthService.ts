@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { axiosInstance } from './index';
-import { PetDTO } from '../types/PetsTypes';
+import { PetDTO } from '../types/PetsDTO';
 
 interface UserReg {
   email: string;
