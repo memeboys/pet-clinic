@@ -13,16 +13,11 @@ function App () {
       <div className="main-content-wrapper">
         <Routes>
           <Route path="/" element={<MainPage />} />
+          <Route path="/sign-up" element={<RegPage />} />
           <Route path="/auth-page" element={<AuthPage />} />
         </Routes>
         <Footer />
       </div>
-      <Routes>
-        <Route path="/" element={<h2>Main</h2>} />
-        <Route path="/sign-up" element={<RegPage />} />
-        <Route path="/auth-page" element={<AuthPage />} />
-      </Routes>
-      <h2>Footer</h2>
     </Router>
   );
 }
