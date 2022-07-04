@@ -1,14 +1,14 @@
 enum PetType {
-  CAT,
-  DOG,
+  CAT = 'CAT',
+  DOG = 'DOG',
 }
 
 enum Role{
-  ADMIN,
-  MANAGER,
-  DOCTOR,
-  CLIENT,
-  UNVERIFIED_CLIENT,
+  ADMIN = 'ADMIN',
+  MANAGER = 'MANAGER',
+  DOCTOR = 'DOCTOR',
+  CLIENT = 'CLIENT',
+  UNVERIFIED_CLIENT = 'UNVERIFIED_CLIENT',
 }
 
 export interface RegisterDto {
