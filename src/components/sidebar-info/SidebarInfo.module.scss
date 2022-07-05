@@ -1,0 +1,78 @@
+.container {
+  margin-left: auto;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  height: 220px;
+  width: 280px;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #d9d9d9;
+  height: 25px;
+  padding: 10px;
+  background-color: #69ade7;
+  color: white;
+  font-size: 15px;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  height: 175px;
+  padding: 10px 0px 10px 0px;
+  overflow: hidden;
+}
+
+.svg {
+  position: absolute;
+  right: 25px;
+  z-index: 1;
+}
+
+.svg:hover {
+  transform: scale(1.2);
+}
+
+.svg_l {
+  position: absolute;
+  right: 285px;
+  z-index: 1;
+}
+
+.svg_l:hover {
+  transform: scale(1.2);
+}
+
+.al_div_container {
+  height: 100%;
+  display: flex;
+  transition: translate;
+  transition-property: transform;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+}
+
+.span {
+  height: 165px;
+  min-width: 240px;
+  max-width: 240px;
+  margin: 0px 20px 0px 20px;
+}
