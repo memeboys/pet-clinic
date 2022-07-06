@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classes from './SidebarInfo.module.scss';
-import Vector_1 from '../../assets/icons/Vector-1.svg';
-import Vector_2 from '../../assets/icons/Vector-2.svg';
+import left_arrow from '../../assets/icons/left-arrow.svg';
+import right_arrow from '../../assets/icons/right-arrow.svg';
 
 type PropTypes = {
   header: string,
@@ -31,7 +31,7 @@ const SidebarBlock: React.FC<PropTypes> = ({ header, text }) => {
         {header}
       </header>
       <main className={classes.main}>
-        <input className={classes.svg_l} onClick={handleLeftClick} type="image" src={Vector_1} alt="стрелка" />
+        <input className={classes.svg_l} onClick={handleLeftClick} type="image" src={left_arrow} alt="стрелка" />
         <div
           className={classes.al_div_container}
           style={{ transform: `translateX(${offset}px)` }}
@@ -46,7 +46,7 @@ const SidebarBlock: React.FC<PropTypes> = ({ header, text }) => {
             { text }
           </span>
         </div>
-        <input className={classes.svg} onClick={handleRightClick} type="image" src={Vector_2} alt="стрелка" />
+        <input className={classes.svg} onClick={handleRightClick} type="image" src={right_arrow} alt="стрелка" />
       </main>
     </div>
   );
