@@ -10,7 +10,7 @@ const App:FC = () => (
     <Routes>
       <Route path="/" element={<h2>Main</h2>} />
       <Route path="/sign-up" element={<RegPage />} />
-      <Route path="/auth-page" element={<AuthPage />} />
+      <Route path="/sign-in" element={<AuthPage />} />
     </Routes>
     <h2>Footer</h2>
   </Router>
