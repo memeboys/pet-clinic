@@ -1,9 +1,11 @@
 import { AxiosResponse } from 'axios';
-import { AuthRequest, AuthResponse, RegisterDto } from '../types/AuthDTO';
+import {
+  AuthRequest, AuthResponse, ClientDto, RegisterDto,
+} from '../types/AuthDTO';
 import { axiosInstance } from './index';
 
 export default class AuthService {
-  static async loginUser (data: AuthRequest): Promise<AxiosResponse<AuthRequest>> {
+  static async loginUser (data: AuthRequest): Promise<AxiosResponse<AuthResponse>> {
     return axiosInstance.post('/auth', data);
   }
 
@@ -11,7 +13,7 @@ export default class AuthService {
     return axiosInstance.post('/registration', data);
   }
 
-  static async getCurrentClient (): Promise<AxiosResponse<AuthResponse>> {
+  static async getCurrentClient (): Promise<AxiosResponse<ClientDto>> {
     return axiosInstance.get('/client');
   }
 }
