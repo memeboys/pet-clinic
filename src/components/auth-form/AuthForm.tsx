@@ -1,27 +1,27 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Formik, Form, Field } from 'formik';
-import React, { useState } from 'react';
+import React from 'react';
 import * as yup from 'yup';
+import { AuthRequest } from '../../types/AuthDTO';
 import AuthService from '../../services/AuthService';
 import './AuthForm.scss';
 
 const AuthForm: React.FC = () => {
   const validationsSchema = yup.object().shape({
-    email: yup.string().email('Incorrect email').required('Email is required'),
+    username: yup.string().email('Incorrect email').required('Email is required'),
     password: yup.string().required('Password is required'),
   });
 
   const onSubmit = async (
-    data: { email: string, password: string },
-    setErrors: (errors: { email: string; password: string; }) => void,
+    data: AuthRequest,
+    setErrors: (errors: { username: string; password: string; }) => void,
   ) => {
-    AuthService.loginUser(data.email, data.password)
+    AuthService.loginUser(data.username, data.password)
       .then(({ data: resData }) => {
         localStorage.setItem('token', resData.jwtToken);
       })
       .catch((err) => {
         if (err.response.status === 403) {
-          setErrors({ email: 'Invalid email or password', password: 'Invalid email or password' });
+          setErrors({ username: 'Invalid email or password', password: 'Invalid email or password' });
         }
       });
   };
@@ -29,7 +29,7 @@ const AuthForm: React.FC = () => {
   return (
     <div className="container">
       <Formik
-        initialValues={{ email: '', password: '' }}
+        initialValues={{ username: '', password: '' }}
         onSubmit={(values, { setErrors }) => {
           onSubmit(values, setErrors);
         }}
@@ -48,12 +48,12 @@ const AuthForm: React.FC = () => {
                     id="email"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.email}
+                    value={values.username}
                     type="text"
-                    name="email"
+                    name="username"
                     placeholder="Email"
                   />
-                  {touched.email && errors.email && <span className="input-wrapper__error">{errors.email}</span>}
+                  {touched.username && errors.username && <span className="input-wrapper__error">{errors.username}</span>}
                 </label>
               </div>
               <div className="input-wrapper">
