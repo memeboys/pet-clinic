@@ -1,10 +1,11 @@
 import { Formik, Form, Field } from 'formik';
 import React from 'react';
 import * as yup from 'yup';
-import AuthService, { UserReg } from '../../../services/AuthService';
+import AuthService from '../../../services/AuthService';
+import { RegisterDto } from '../../../types/AuthDTO';
 import classes from './SignUp.module.scss';
 
-function SignUp () {
+function SignUp (): JSX.Element {
   const validationsSchema = yup.object().shape({
     email: yup.string().email('Please enter a valid email address').required('Email is required'),
     firstname: yup.string().required('Firstname is required'),
@@ -15,7 +16,7 @@ function SignUp () {
       .test('minLenght', 'minimum of 5 characters', (val) => `${val}`.length > 4).required('Password is required'),
   });
 
-  const onSubmit = (data: UserReg) => {
+  const onSubmit = (data: RegisterDto) => {
     AuthService.createNewUser(data);
   };
 
