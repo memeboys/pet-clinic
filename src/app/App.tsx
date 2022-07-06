@@ -1,20 +1,19 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import RegPage from '../pages/reg-page/RegPage';
 import AuthPage from '../pages/auth-page/AuthPage';
+import { Header } from '../components/header/Header';
 
-function App () {
-  return (
-    <Router>
-      <h2>Header</h2>
-      <Routes>
-        <Route path="/" element={<h2>Main</h2>} />
-        <Route path="/sign-up" element={<RegPage />} />
-        <Route path="/auth-page" element={<AuthPage />} />
-      </Routes>
-      <h2>Footer</h2>
-    </Router>
-  );
-}
+const App:FC = () => (
+  <Router>
+    <Header />
+    <Routes>
+      <Route path="/" element={<h2>Main</h2>} />
+      <Route path="/sign-up" element={<RegPage />} />
+      <Route path="/auth-page" element={<AuthPage />} />
+    </Routes>
+    <h2>Footer</h2>
+  </Router>
+);
 
 export default App;
