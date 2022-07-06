@@ -4,7 +4,6 @@ import RegPage from '../pages/reg-page/RegPage';
 import AuthPage from '../pages/auth-page/AuthPage';
 import { Header } from '../components/header/Header';
 import MainPage from '../pages/main-page/MainPage';
-import Footer from '../components/footer/Footer';
 import 'antd/dist/antd.css';
 
 const App: FC = () => (
@@ -16,7 +15,6 @@ const App: FC = () => (
         <Route path="/sign-up" element={<RegPage />} />
         <Route path="/sign-in" element={<AuthPage />} />
       </Routes>
-      <Footer />
     </div>
   </Router>
 );
