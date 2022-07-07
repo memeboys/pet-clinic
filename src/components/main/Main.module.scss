@@ -1,6 +1,10 @@
 .main {
-  width: 1000px;
+  max-width: 1000px;
   margin: 0 auto;
   flex: 1 0 auto;
   margin-top: 3rem;
+}
+
+.main_window {
+  display: flex;
 }
