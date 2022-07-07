@@ -1,5 +1,3 @@
-import { PetDTO } from './PetsDTO';
-
 enum Role{
   ADMIN = 'ADMIN',
   MANAGER = 'MANAGER',
@@ -23,12 +21,4 @@ export interface AuthRequest{
 export interface AuthResponse {
   jwtToken: string,
   role: Role;
-}
-
-export interface ClientDto{
-  firstname: string,
-  lastname: string,
-  avatar?: string | null,
-  email?: string,
-  pets: PetDTO[]
 }
