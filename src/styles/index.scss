@@ -1,8 +1,20 @@
 @import "~normalize.css";
 @import "../assets/fonts/helvetica-neue/helvetica-neue.css";
 
+$textcolor: #3F3F3F;
+
 body {
   font: normal 14px/1.5 "Helvetica Neue", sans-serif;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+	background-color: #F6F6FC;
+  color: $textcolor;
+	a{
+		color:$textcolor
+	}
 }
 
 .container {
@@ -13,4 +25,17 @@ body {
 .inner-wrapper {
   width: 90%;
   margin: 0 auto;
+
 }
+
+.main-content-wrapper {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+button {
+  cursor: pointer;
+}
+
+

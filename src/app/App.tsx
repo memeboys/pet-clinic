@@ -1,21 +1,24 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import RegPage from '../pages/reg-page/RegPage';
 import AuthPage from '../pages/auth-page/AuthPage';
 import SidebarInfoPage from '../pages/sidebar-info/SidebarInfo';
+import { Header } from '../components/header/Header';
+import MainPage from '../pages/main-page/MainPage';
+import 'antd/dist/antd.css';
 
-function App () {
-  return (
-    <Router>
-      <h2>Header</h2>
+const App: FC = () => (
+  <Router>
+    <Header />
+    <div className="main-content-wrapper">
       <Routes>
         <Route path="/" element={<SidebarInfoPage />} />
+        <Route path="/" element={<MainPage />} />
         <Route path="/sign-up" element={<RegPage />} />
-        <Route path="/auth-page" element={<AuthPage />} />
+        <Route path="/sign-in" element={<AuthPage />} />
       </Routes>
-      <h2>Footer</h2>
-    </Router>
-  );
-}
+    </div>
+  </Router>
+);
 
 export default App;
