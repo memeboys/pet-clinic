@@ -1,30 +1,40 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Formik, Form, Field } from 'formik';
-import React, { useState } from 'react';
+import React from 'react';
 import * as yup from 'yup';
+import { AuthRequest } from '../../types/AuthDTO';
 import AuthService from '../../services/AuthService';
 import './AuthForm.scss';
 
 const AuthForm: React.FC = () => {
   const validationsSchema = yup.object().shape({
-    email: yup.string().email('Incorrect email').required('Email is required'),
+    username: yup.string().email('Incorrect email').required('Email is required'),
     password: yup.string().required('Password is required'),
   });
 
-  const [errorStatus, setErrorStatus] = useState(null);
-
-  const onSubmit = async (data: { email: string, password: string }) => {
-    AuthService.loginUser(data.email, data.password)
-      .then((res) => {
-        localStorage.setItem('token', res.data.jwtToken);
-        setErrorStatus(null);
+  const onSubmit = async (
+    data: AuthRequest,
+    setErrors: (errors: { username: string; password: string; }) => void,
+  ) => {
+    AuthService.loginUser(data.username, data.password)
+      .then(({ data: resData }) => {
+        localStorage.setItem('token', resData.jwtToken);
       })
-      .catch((err) => setErrorStatus(err.request.status));
+      .catch((err) => {
+        if (err.response.status === 403) {
+          setErrors({ username: 'Invalid email or password', password: 'Invalid email or password' });
+        }
+      });
   };
 
   return (
     <div className="container">
-      <Formik initialValues={{ email: '', password: '' }} onSubmit={onSubmit} validationSchema={validationsSchema}>
+      <Formik
+        initialValues={{ username: '', password: '' }}
+        onSubmit={(values, { setErrors }) => {
+          onSubmit(values, setErrors);
+        }}
+        validationSchema={validationsSchema}
+      >
         {({
           handleChange, handleBlur, values, isValid, dirty, touched, errors,
         }) => (
@@ -38,13 +48,12 @@ const AuthForm: React.FC = () => {
                     id="email"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.email}
+                    value={values.username}
                     type="text"
-                    name="email"
+                    name="username"
                     placeholder="Email"
                   />
-                  {touched.email && errors.email && <span className="input-wrapper__error">{errors.email}</span>}
-                  {errorStatus === 403 ? <span className="input-wrapper__error">Incorrect login or password</span> : null}
+                  {touched.username && errors.username && <span className="input-wrapper__error">{errors.username}</span>}
                 </label>
               </div>
               <div className="input-wrapper">
@@ -60,13 +69,13 @@ const AuthForm: React.FC = () => {
                     name="password"
                   />
                   {touched.password && errors.password && <span className="input-wrapper__error">{errors.password}</span>}
-                  {errorStatus === 403 ? <span className="input-wrapper__error">Incorrect login or password</span> : null}
                 </label>
               </div>
               <button
                 className="auth-form__btn"
                 disabled={!isValid && !dirty}
                 type="submit"
+
               >
                 Submit
               </button>
