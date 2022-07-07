@@ -11,7 +11,7 @@ export default class AuthService {
     return axiosInstance.post('/registration', data);
   }
 
-  static async getCurrentClient (): Promise<ClientDto> {
+  static async getCurrentClient (): Promise<AxiosResponse<ClientDto>> {
     return axiosInstance.get('/client');
   }
 }
