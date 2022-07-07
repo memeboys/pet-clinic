@@ -15,7 +15,7 @@ const AuthForm: React.FC = () => {
     data: AuthRequest,
     setErrors: (errors: { username: string; password: string; }) => void,
   ) => {
-    AuthService.loginUser(data.username, data.password)
+    AuthService.loginUser(data)
       .then(({ data: resData }) => {
         localStorage.setItem('token', resData.jwtToken);
       })
