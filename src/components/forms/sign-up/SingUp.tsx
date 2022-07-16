@@ -21,7 +21,7 @@ function SignUp (): JSX.Element {
   };
 
   return (
-    <div className="container">
+    <div className={classes.container}>
       <Formik
         initialValues={{
           email: '',
