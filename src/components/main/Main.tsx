@@ -12,10 +12,8 @@ const Main: React.FC = () => (
       <PanelList />
       <Footer />
     </main>
-  </div>
     <SidebarInfo />
   </div>
-
 );
 
 export default Main;
