@@ -20,9 +20,9 @@ const ModalQR = ({ active, onClose }: ModalProps): JSX.Element => {
   };
 
   const validationsSchema = yup.object().shape({
-    ownerName: yup.string().required('Поле обязательно к заполнению'),
-    address: yup.string().required('Поле обязательно к заполнению'),
-    phone: yup.number().required('Поле обязательно к заполнению'),
+    ownerName: yup.string().required('Field is required'),
+    address: yup.string().required('Field is required'),
+    phone: yup.number().required('Field is required'),
   });
 
   const onSubmit = async (data: PetContactDto) => {
@@ -30,6 +30,7 @@ const ModalQR = ({ active, onClose }: ModalProps): JSX.Element => {
     const newData = { ...data, phone: +phone };
     try {
       const response = await PetContactQrCode.createPetContact(id, newData);
+
       if (response.status === 200) {
         PetContactQrCode.encodeQrCode(id).then((res) => {
           const blob = new Blob(
@@ -45,8 +46,6 @@ const ModalQR = ({ active, onClose }: ModalProps): JSX.Element => {
       console.log(error);
     }
   };
-
-  // useEffect(() => () => { setQrCode(''); }, [active]);
 
   return (
     <Modal visible={active} footer={null} onCancel={onClose}>
@@ -102,7 +101,7 @@ const ModalQR = ({ active, onClose }: ModalProps): JSX.Element => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.phone}
-                    type="tel"
+                    type="number"
                     name="phone"
                     placeholder="Введите номер телефона владельца"
                     className={styles.input}
