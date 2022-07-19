@@ -1,11 +1,11 @@
 import { Formik, Form, Field } from 'formik';
 import React from 'react';
 import * as yup from 'yup';
-import { AuthRequest } from '../../types/AuthDTO';
-import AuthService from '../../services/AuthService';
-import './AuthForm.scss';
+import { AuthRequest } from '../../../types/AuthDTO';
+import AuthService from '../../../services/AuthService';
+import classes from './SignIn.module.scss';
 
-const AuthForm: React.FC = () => {
+const SignIn: React.FC = () => {
   const validationsSchema = yup.object().shape({
     username: yup.string().email('Incorrect email').required('Email is required'),
     password: yup.string().required('Password is required'),
@@ -27,7 +27,7 @@ const AuthForm: React.FC = () => {
   };
 
   return (
-    <div className="container">
+    <div className={classes.container}>
       <Formik
         initialValues={{ username: '', password: '' }}
         onSubmit={(values, { setErrors }) => {
@@ -38,12 +38,12 @@ const AuthForm: React.FC = () => {
         {({
           handleChange, handleBlur, values, isValid, dirty, touched, errors,
         }) => (
-          <Form className="auth-form">
-            <div className="inner-wrapper">
-              <h2 className="auth-form__title">Sign-in</h2>
-              <div className="input-wrapper">
+          <Form className={classes.form}>
+            <div>
+              <h4 className={classes.form_title}>Sign-in</h4>
+              <div className={classes.input_wrapper}>
                 <label htmlFor="email">
-                  Email
+                  Email adress
                   <Field
                     id="email"
                     onChange={handleChange}
@@ -51,12 +51,13 @@ const AuthForm: React.FC = () => {
                     value={values.username}
                     type="text"
                     name="username"
-                    placeholder="Email"
+                    placeholder="Email adress"
+                    className={classes.input}
                   />
-                  {touched.username && errors.username && <span className="input-wrapper__error">{errors.username}</span>}
+                  {touched.username && errors.username && <span className={classes.input_wrapper__error}>{errors.username}</span>}
                 </label>
               </div>
-              <div className="input-wrapper">
+              <div className={classes.input_wrapper}>
                 <label htmlFor="password">
                   Password
                   <Field
@@ -67,12 +68,13 @@ const AuthForm: React.FC = () => {
                     id="password"
                     type="password"
                     name="password"
+                    className={classes.input}
                   />
-                  {touched.password && errors.password && <span className="input-wrapper__error">{errors.password}</span>}
+                  {touched.password && errors.password && <span className={classes.input_wrapper__error}>{errors.password}</span>}
                 </label>
               </div>
               <button
-                className="auth-form__btn"
+                className={classes.auth_form__btn}
                 disabled={!isValid && !dirty}
                 type="submit"
 
@@ -87,4 +89,4 @@ const AuthForm: React.FC = () => {
   );
 };
 
-export default AuthForm;
+export default SignIn;
