@@ -1,7 +1,7 @@
 export interface NewsDTO {
-  Title: string,
-  Content: string,
-  Type: string,
+  title: string,
+  content: string,
+  type: string,
   isImportant: boolean,
-  EndTime: string,
+  endTime: string,
 }

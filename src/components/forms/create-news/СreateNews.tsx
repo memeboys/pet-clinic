@@ -7,8 +7,8 @@ import classes from './СreateNews.module.scss';
 
 function СreateNews (): JSX.Element {
   const validationsSchema = yup.object().shape({
-    Title: yup.string().required('Title is required'),
-    Content: yup.string().required('Content is required'),
+    title: yup.string().required('Title is required'),
+    content: yup.string().required('Content is required'),
   });
 
   const onSubmit = async (
@@ -21,7 +21,7 @@ function СreateNews (): JSX.Element {
     <div className={classes.container}>
       <Formik
         initialValues={{
-          Title: '', Content: '', Type: 'UPDATING', isImportant: false, EndTime: '2022-07-16T21:01:46.729Z',
+          title: '', content: '', type: 'UPDATING', isImportant: false, endTime: '2022-07-16T21:01:46.729Z',
         }}
         onSubmit={(values) => { onSubmit(values); }}
         validationSchema={validationsSchema}
@@ -33,32 +33,32 @@ function СreateNews (): JSX.Element {
             <div>
               <h4 className={classes.form_title}>Create new news</h4>
               <div className={classes.input_wrapper}>
-                <label htmlFor="Title">
+                <label htmlFor="title">
                   Title
                   <Field
-                    id="Title"
+                    id="title"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.Title}
+                    value={values.title}
                     type="text"
-                    name="Title"
+                    name="title"
                     className={classes.input}
                   />
-                  {touched.Title && errors.Title && <span className={classes.input_wrapper__error}>{errors.Title}</span>}
+                  {touched.title && errors.title && <span className={classes.input_wrapper__error}>{errors.title}</span>}
                 </label>
               </div>
               <div className={classes.input_wrapper}>
-                <label htmlFor="Content">
+                <label htmlFor="content">
                   Content
                   <textarea
-                    id="Content"
+                    id="content"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.Content}
-                    name="Content"
+                    value={values.content}
+                    name="content"
                     className={classes.input}
                   />
-                  {touched.Content && errors.Content && <span className={classes.input_wrapper__error}>{errors.Content}</span>}
+                  {touched.content && errors.content && <span className={classes.input_wrapper__error}>{errors.content}</span>}
                 </label>
               </div>
               <div>
