@@ -22,7 +22,7 @@ export default class MedicineService {
   }
 
   static async searchMedicine (searchText: string): Promise<AxiosResponse<MedicineResponseDto>> {
-    return axiosInstance.get(`/manager/medicine/search${searchText}`);
+    return axiosInstance.get(`/manager/medicine/search/?searchText=${searchText}`);
   }
 
   static async getMedicinePic (id: number): Promise<AxiosResponse> {
