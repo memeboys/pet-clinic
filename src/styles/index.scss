@@ -30,7 +30,7 @@ body {
 
 .main-content-wrapper {
   display: flex;
-  height: 100%;
+  height: calc(100% - 70px);
   flex-direction: column;
 }
 
