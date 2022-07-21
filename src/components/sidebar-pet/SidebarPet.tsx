@@ -1,61 +1,52 @@
 import React, { useEffect, useState } from 'react';
 import { Collapse } from 'antd';
 import './AntdStyle.scss';
+import { Link, useNavigate } from 'react-router-dom';
 import classes from './SidebarPet.module.scss';
-import PetService from '../../services/PetServices';
-import { PetDTO } from '../../types/PetsDTO';
+import AuthService from '../../services/AuthService';
+import { ClientDto } from '../../types/ClientDTO';
 import Star_Platinum from '../../assets/images/StarPlatinum.png'; // пока нету картинки питомца
 
 const SidebarPet: React.FC = () => {
+  let i = 1;
   const { Panel } = Collapse;
-  const [petData, setPetData] = useState<PetDTO | null>(null);
-
-  const id = '1'; // Позже id должен быть в props
+  const [clientData, setClientData] = useState<ClientDto | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    PetService.getPet(id)
+    AuthService.getCurrentClient()
       .then(({ data }) => {
-        setPetData(data);
+        setClientData(data);
       });
   }, []);
 
-  const genExtra = () => (
-    <img src={Star_Platinum} alt="img" className={classes.img} />
-  );
+  const habdleChange = (event:any) => {
+    if (event) {
+      navigate(`/pet/${event}`);
+    }
+  };
+
+  function generatePet () {
+    return clientData?.pets.map((pet) => (
+      <Panel
+        className={classes.panel}
+        header={pet.name}
+        // eslint-disable-next-line no-plusplus
+        key={i++}
+        extra={<img src={Star_Platinum /* pet.avatar */} alt="avatar" className={classes.img} />}
+      >
+        <div>
+          <p>
+            <Link to={`/pet/${pet.id}`}> Тут будет какой-то функционал, наверное </Link>
+          </p>
+        </div>
+      </Panel>
+    ));
+  }
 
   return (
-    <Collapse className={classes.container} expandIconPosition="end">
-      <Panel className={classes.panel} header={petData?.name} key="1" extra={genExtra()}>
-        <div>
-          <p>
-            Тут будет какой-то функционал, наверное
-          </p>
-        </div>
-      </Panel>
-      <Panel className={classes.panel} header="Killer Queen" key="2" extra={genExtra()}>
-        <div>
-          <p>
-            а тут будет что то классное, наверное
-          </p>
-        </div>
-      </Panel>
-      <Panel className={classes.panel} header="King Crimson" key="3" extra={genExtra()}>
-        <div>
-          <p>
-            ту нибудет ничего, наверное
-          </p>
-        </div>
-      </Panel>
-      <Panel className={classes.panel} header="Crazy Diamond" key="4" extra={genExtra()}>
-        <div>
-          <p>
-            а тут будет много много много много много много много много много много много много много много
-            много много много много много много много много много много
-            много много много много много много много много много много много много много много много много
-            много много много много много много много много, наверное
-          </p>
-        </div>
-      </Panel>
+    <Collapse expandIconPosition="end" className={classes.container} onChange={habdleChange} accordion>
+      {generatePet()}
     </Collapse>
   );
 };

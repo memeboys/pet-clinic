@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Collapse } from 'antd';
+import { useParams } from 'react-router-dom';
 import PetService from '../../services/PetServices';
 import AuthService from '../../services/AuthService';
 import { ClientDto } from '../../types/ClientDTO';
@@ -11,11 +12,10 @@ const PanelList: React.FC = () => {
   const { Panel } = Collapse;
   const [petData, setPetData] = useState<PetDTO | null>(null);
   const [clientData, setClientData] = useState<ClientDto | null>(null);
-
-  const id = '1'; // Позже id должен быть в props
+  const { petId } = useParams();
 
   useEffect(() => {
-    PetService.getPet(id)
+    PetService.getPet(petId || '0')
       .then(({ data }) => {
         setPetData(data);
       });
@@ -24,7 +24,7 @@ const PanelList: React.FC = () => {
       .then(({ data }) => {
         setClientData(data);
       });
-  }, []);
+  }, [petId]);
 
   const clientInfo = (
     <ul className={classes.panel__list}>
