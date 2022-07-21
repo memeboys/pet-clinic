@@ -3,29 +3,35 @@ import {
   Formik, Form, Field,
 } from 'formik';
 import * as yup from 'yup';
-import { Modal } from 'antd';
+import { Modal, Spin } from 'antd';
 import { PetContactDto } from '../../types/PetContactDTO';
 
 import styles from './Modal.module.scss';
 import PetContactQrCode from '../../services/PetContactQrCode';
-import { ModalProps } from '../../types/ModalProps';
+
+interface ModalProps {
+  active: boolean;
+  onClose: () => void;
+}
 
 const ModalQR = ({ active, onClose }: ModalProps): JSX.Element => {
   const [qrCode, setQrCode] = useState('');
+  const [loading, setLoading] = useState(false);
   const id = 1; // TODO:Изменить как будет роут на id из него
   const initialValues = {
     ownerName: '',
     address: '',
-    phone: 0,
+    phone: '',
   };
-
+  const phoneRegExp = /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
   const validationsSchema = yup.object().shape({
     ownerName: yup.string().required('Field is required'),
     address: yup.string().required('Field is required'),
-    phone: yup.number().required('Field is required'),
+    phone: yup.string().matches(phoneRegExp, 'Phone number is not valid').required('Field is required'),
   });
 
   const onSubmit = async (data: PetContactDto) => {
+    setLoading(true);
     const { phone } = data;
     const newData = { ...data, phone: +phone };
     try {
@@ -40,6 +46,7 @@ const ModalQR = ({ active, onClose }: ModalProps): JSX.Element => {
           const image = URL.createObjectURL(blob);
 
           setQrCode(image);
+          setLoading(false);
         });
       }
     } catch (error) {
@@ -101,7 +108,7 @@ const ModalQR = ({ active, onClose }: ModalProps): JSX.Element => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.phone}
-                    type="number"
+                    type="tel"
                     name="phone"
                     placeholder="Введите номер телефона владельца"
                     className={styles.input}
@@ -120,8 +127,13 @@ const ModalQR = ({ active, onClose }: ModalProps): JSX.Element => {
       </Formik>
       {qrCode ? (
         <div className={styles['code-wrapper']}>
-          <h4>Ваш QR-адресник</h4>
-          <img src={`${qrCode}`} alt="qrcode" />
+
+          {loading ? <Spin size="large" /> : (
+            <div>
+              <h4>Ваш QR-адресник</h4>
+              <img src={`${qrCode}`} alt="qrcode" />
+            </div>
+          )}
         </div>
       ) : null}
 
