@@ -15,7 +15,11 @@ const App: FC = () => (
         <Route path="/" element={<MainPage />} />
         <Route path="/sign-up" element={<RegPage />} />
         <Route path="/sign-in" element={<AuthPage />} />
-        <Route path="/manager" element={<ManagerPage />} />
+        <Route path="/manager" element={<ManagerPage />}>
+          <Route index element={<h3>Категории</h3>} />
+          <Route path="news" element={<h3>Новости</h3>} />
+          <Route path="medicine" element={<h3>Лекарства</h3>} />
+        </Route>
       </Routes>
     </div>
   </Router>
