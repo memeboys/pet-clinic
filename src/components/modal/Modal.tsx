@@ -45,14 +45,27 @@ const ModalQR = ({ active, onClose }: ModalProps): JSX.Element => {
           );
           const image = URL.createObjectURL(blob);
 
-          setQrCode(image);
           setLoading(false);
+          setQrCode(image);
         });
       }
     } catch (error) {
       console.log(error);
     }
   };
+
+  let qrData = null;
+  if (qrCode) {
+    qrData = (
+      <div className={styles['code-wrapper']}>
+        <div>
+          <h4>Ваш QR-адресник</h4>
+          <img src={`${qrCode}`} alt="qrcode" />
+        </div>
+
+      </div>
+    );
+  }
 
   return (
     <Modal visible={active} footer={null} onCancel={onClose}>
@@ -125,17 +138,7 @@ const ModalQR = ({ active, onClose }: ModalProps): JSX.Element => {
           </Form>
         )}
       </Formik>
-      {qrCode ? (
-        <div className={styles['code-wrapper']}>
-
-          {loading ? <Spin size="large" /> : (
-            <div>
-              <h4>Ваш QR-адресник</h4>
-              <img src={`${qrCode}`} alt="qrcode" />
-            </div>
-          )}
-        </div>
-      ) : null}
+      {loading ? <Spin size="large" className={styles.spinner} /> : qrData}
 
     </Modal>
   );
