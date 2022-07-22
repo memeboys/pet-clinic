@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Collapse } from 'antd';
 import { CollapseProps } from 'antd/lib/collapse/Collapse';
 import AuthService from '../../services/AuthService';
@@ -35,9 +35,7 @@ const SidebarPet: React.FC = () => {
         extra={<img src={Star_Platinum /* pet.avatar */} alt="avatar" className={classes.img} />}
       >
         <div>
-          <p>
-            <Link to={`/pet/${pet.id}`}> Тут будет какой-то функционал, наверное </Link>
-          </p>
+          <p>Тут будет какой-то функционал, наверное</p>
         </div>
       </Panel>
     ));
