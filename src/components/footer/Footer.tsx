@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ModalQR } from '../modal/Modal';
+import { ModalQR } from '../modal-qr/ModalQR';
 import classes from './Footer.module.scss';
 
 const Footer: React.FC = () => {

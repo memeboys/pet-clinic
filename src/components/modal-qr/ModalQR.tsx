@@ -3,11 +3,12 @@ import {
   Formik, Form, Field,
 } from 'formik';
 import * as yup from 'yup';
-import { Modal, Spin } from 'antd';
+import { Modal } from 'antd';
 import { PetContactDto } from '../../types/PetContactDTO';
 
 import styles from './Modal.module.scss';
 import PetContactQrCode from '../../services/PetContactQrCode';
+import Spinner from '../Spinner';
 
 interface ModalProps {
   active: boolean;
@@ -138,7 +139,7 @@ const ModalQR = ({ active, onClose }: ModalProps): JSX.Element => {
           </Form>
         )}
       </Formik>
-      {loading ? <Spin size="large" className={styles.spinner} /> : qrData}
+      {loading ? <Spinner size="large" /> : qrData}
 
     </Modal>
   );
