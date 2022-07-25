@@ -1,7 +1,7 @@
 import { Formik, Form, Field } from 'formik';
 import React from 'react';
 import * as yup from 'yup';
-import NewsService from '../../../services/NewsServise';
+import NewsService from '../../../services/NewsServiсe';
 import { NewsDTO } from '../../../types/NewsDTO';
 import classes from './СreateNews.module.scss';
 
