@@ -1,8 +1,8 @@
 import React from 'react';
 import CreateNews from '../../components/forms/create-news/CreateNews';
 
-function СreateNewsPage ():React.ReactElement {
+function CreateNewsPage ():React.ReactElement {
   return <CreateNews />;
 }
 
-export default СreateNewsPage;
+export default CreateNewsPage;
