@@ -14,29 +14,13 @@ const Manager:React.FC = () => {
     <aside className={classes.navbar}>
       <ul className={classes.menu}>
         <li>
-          <NavLink
-            to="categories"
-            className={activeClass}
-          >
-            Категории
-
-          </NavLink>
+          <NavLink to="categories" className={activeClass}>Категории</NavLink>
         </li>
         <li>
-          <NavLink
-            to="news"
-            className={activeClass}
-          >
-            Новости
-          </NavLink>
+          <NavLink to="news" className={activeClass}>Новости</NavLink>
         </li>
         <li>
-          <NavLink
-            to="medicine"
-            className={activeClass}
-          >
-            Лекарства
-          </NavLink>
+          <NavLink to="medicine" className={activeClass}>Лекарства</NavLink>
         </li>
       </ul>
       <main className={classes.content}><Outlet /></main>
