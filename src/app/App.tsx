@@ -13,6 +13,7 @@ const App: FC = () => (
     <div className="main-content-wrapper">
       <Routes>
         <Route path="/" element={<MainPage />} />
+        <Route path="/pet/:petId" element={<MainPage />} />
         <Route path="/sign-up" element={<RegPage />} />
         <Route path="/sign-in" element={<AuthPage />} />
         <Route path="/create-news" element={<CreateNewsPage />} />
