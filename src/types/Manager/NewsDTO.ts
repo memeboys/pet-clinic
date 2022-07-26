@@ -1,3 +1,5 @@
+import { WithId } from '../UtilityTypes';
+
 enum News {
   UPDATING = 'UPDATING',
   ADVERTISING_ACTIONS = 'ADVERTISING_ACTIONS',
@@ -14,4 +16,4 @@ export interface NewsData{
 
 }
 
-export type ManagerNewsResponseDto<T extends NewsData> = T & { id: number };
+export type ManagerNewsResponseDto = WithId<NewsData>;

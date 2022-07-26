@@ -6,7 +6,7 @@ import {
 } from '../../types/Manager/MedicineDTO';
 
 export default class MedicineService {
-  static async createMedicine (data: MedicineData): Promise<AxiosResponse<MedicineDto<MedicineData>>> {
+  static async createMedicine (data: MedicineData): Promise<AxiosResponse<MedicineDto>> {
     return axiosInstance.post('/manager/medicine', data);
   }
 
@@ -21,7 +21,7 @@ export default class MedicineService {
     });
   }
 
-  static async searchMedicine (data: SearchMedicine): Promise<AxiosResponse<MedicineDto<MedicineData>>> {
+  static async searchMedicine (data: SearchMedicine): Promise<AxiosResponse<MedicineDto>> {
     return axiosInstance.get(`/manager/medicine/search?manufactureName=${data.manufactureName}
     &name=${data.name}
     &searchText=${data.searchText}`);
@@ -31,7 +31,7 @@ export default class MedicineService {
     return axiosInstance.get(`/manager/medicine/${id}/set-pic`, { responseType: 'arraybuffer' });
   }
 
-  static async getMedicine (id: number): Promise<AxiosResponse<MedicineDto<MedicineData>>> {
+  static async getMedicine (id: number): Promise<AxiosResponse<MedicineDto>> {
     return axiosInstance.get(`/manager/medicine/${id}`);
   }
 
@@ -39,7 +39,7 @@ export default class MedicineService {
     return axiosInstance.delete(`/manager/medicine/${id}`);
   }
 
-  static async updateMedicine (id: number, data: MedicineData): Promise<AxiosResponse<MedicineDto<MedicineData>>> {
+  static async updateMedicine (id: number, data: MedicineData): Promise<AxiosResponse<MedicineDto>> {
     return axiosInstance.put(`/manager/medicine/${id}`, data);
   }
 }

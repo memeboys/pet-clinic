@@ -3,15 +3,15 @@ import { axiosInstance } from '../index';
 import { NewsData, ManagerNewsResponseDto } from '../../types/Manager/NewsDTO';
 
 export default class NewsService {
-  static async createNews (data: NewsData): Promise<AxiosResponse<ManagerNewsResponseDto<NewsData>>> {
+  static async createNews (data: NewsData): Promise<AxiosResponse<ManagerNewsResponseDto>> {
     return axiosInstance.post('/manager/news', data);
   }
 
-  static async getAllNews (): Promise<AxiosResponse<ManagerNewsResponseDto<NewsData>>> {
+  static async getAllNews (): Promise<AxiosResponse<ManagerNewsResponseDto>> {
     return axiosInstance.get('/manager/news');
   }
 
-  static async getNewsById (id: number): Promise<AxiosResponse<ManagerNewsResponseDto<NewsData>>> {
+  static async getNewsById (id: number): Promise<AxiosResponse<ManagerNewsResponseDto>> {
     return axiosInstance.get(`/manager/news/${id}`);
   }
 
@@ -19,7 +19,7 @@ export default class NewsService {
     return axiosInstance.delete(`/manager/news/${id}`);
   }
 
-  static async updateNews (id: number, data: NewsData): Promise<AxiosResponse<ManagerNewsResponseDto<NewsData>>> {
+  static async updateNews (id: number, data: NewsData): Promise<AxiosResponse<ManagerNewsResponseDto>> {
     return axiosInstance.put(`/manager/news/${id}`, data);
   }
 }
