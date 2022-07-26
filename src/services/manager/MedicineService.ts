@@ -1,16 +1,16 @@
 import { AxiosResponse } from 'axios';
 import { axiosInstance } from '../index';
 import {
-  MedicineRequestDto,
-  MedicineResponseDto, UploadedFileDto,
-} from '../../types/ManagerDTO';
+  MedicineData,
+  MedicineDto, UploadedFile, SearchMedicine,
+} from '../../types/Manager/MedicineDTO';
 
 export default class MedicineService {
-  static async createMedicine (data: MedicineResponseDto): Promise<AxiosResponse<MedicineResponseDto>> {
+  static async createMedicine (data: MedicineData): Promise<AxiosResponse<MedicineDto<MedicineData>>> {
     return axiosInstance.post('/manager/medicine', data);
   }
 
-  static async createMedicinePic (id: number, selectedFile: string): Promise<AxiosResponse<UploadedFileDto>> {
+  static async createMedicinePic (id: number, selectedFile: string): Promise<AxiosResponse<UploadedFile>> {
     const formData = new FormData();
     formData.append('file', selectedFile);
 
@@ -21,15 +21,17 @@ export default class MedicineService {
     });
   }
 
-  static async searchMedicine (searchText: string): Promise<AxiosResponse<MedicineResponseDto>> {
-    return axiosInstance.get(`/manager/medicine/search/?searchText=${searchText}`);
+  static async searchMedicine (data: SearchMedicine): Promise<AxiosResponse<MedicineDto<MedicineData>>> {
+    return axiosInstance.get(`/manager/medicine/search?manufactureName=${data.manufactureName}
+    &name=${data.name}
+    &searchText=${data.searchText}`);
   }
 
   static async getMedicinePic (id: number): Promise<AxiosResponse> {
     return axiosInstance.get(`/manager/medicine/${id}/set-pic`, { responseType: 'arraybuffer' });
   }
 
-  static async getMedicine (id: number): Promise<AxiosResponse<MedicineResponseDto>> {
+  static async getMedicine (id: number): Promise<AxiosResponse<MedicineDto<MedicineData>>> {
     return axiosInstance.get(`/manager/medicine/${id}`);
   }
 
@@ -37,7 +39,7 @@ export default class MedicineService {
     return axiosInstance.delete(`/manager/medicine/${id}`);
   }
 
-  static async updateMedicine (id: number, data: MedicineRequestDto): Promise<AxiosResponse<MedicineResponseDto>> {
+  static async updateMedicine (id: number, data: MedicineData): Promise<AxiosResponse<MedicineDto<MedicineData>>> {
     return axiosInstance.put(`/manager/medicine/${id}`, data);
   }
 }

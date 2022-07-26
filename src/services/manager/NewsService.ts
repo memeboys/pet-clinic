@@ -1,17 +1,17 @@
 import { AxiosResponse } from 'axios';
 import { axiosInstance } from '../index';
-import { NewsRequest, NewsResponse } from '../../types/ManagerDTO';
+import { NewsData, ManagerNewsResponseDto } from '../../types/Manager/NewsDTO';
 
 export default class NewsService {
-  static async createNews (data: NewsRequest): Promise<AxiosResponse<NewsResponse>> {
+  static async createNews (data: NewsData): Promise<AxiosResponse<ManagerNewsResponseDto<NewsData>>> {
     return axiosInstance.post('/manager/news', data);
   }
 
-  static async getAllNews (): Promise<AxiosResponse<NewsResponse>> {
+  static async getAllNews (): Promise<AxiosResponse<ManagerNewsResponseDto<NewsData>>> {
     return axiosInstance.get('/manager/news');
   }
 
-  static async getNewsById (id: number): Promise<AxiosResponse<NewsResponse>> {
+  static async getNewsById (id: number): Promise<AxiosResponse<ManagerNewsResponseDto<NewsData>>> {
     return axiosInstance.get(`/manager/news/${id}`);
   }
 
@@ -19,7 +19,7 @@ export default class NewsService {
     return axiosInstance.delete(`/manager/news/${id}`);
   }
 
-  static async updateNews (id: number, data: NewsRequest): Promise<AxiosResponse<NewsResponse>> {
+  static async updateNews (id: number, data: NewsData): Promise<AxiosResponse<ManagerNewsResponseDto<NewsData>>> {
     return axiosInstance.put(`/manager/news/${id}`, data);
   }
 }
