@@ -1,39 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { Outlet, NavLink } from 'react-router-dom';
 import classes from './ManagerList.module.scss';
 
-const Manager:React.FC = () => (
-  <aside className={classes.navbar}>
-    <ul className={classes.menu}>
-      <li>
-        <NavLink
-          to="categories"
-          className={({ isActive }) => clsx(classes.link, { [classes.active]: isActive })}
-        >
-          Категории
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="news"
-          className={({ isActive }) => clsx(classes.link, { [classes.active]: isActive })}
-        >
-          Новости
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="medicine"
-          className={({ isActive }) => clsx(classes.link, { [classes.active]: isActive })}
-        >
-          Лекарства
-        </NavLink>
-      </li>
-    </ul>
-    <main className={classes.content}><Outlet /></main>
+const Manager:React.FC = () => {
+  const [categories, setCategories] = useState<string[]>([]);
 
-  </aside>
-);
+  useEffect(() => {
+    setTimeout(() => setCategories(['News', 'Medicine', 'something else']), 1000);
+  }, []);
+
+  const activeClass = ({ isActive }:{ isActive:boolean }) => (clsx(classes.link, { [classes.active]: isActive }));
+
+  return (
+    <div className={classes.manager_page}>
+      <aside className={classes.navbar}>
+        <header className={classes.list_header}>Категории</header>
+        <ul className={classes.menu_list}>
+          {categories.map((category) => (
+            <li key={category}>
+              <NavLink
+                to={category}
+                className={(isActive) => activeClass(isActive)}
+              >
+                {category}
+              </NavLink>
+            </li>
+          ))}
+
+        </ul>
+      </aside>
+      <main className={classes.content}><Outlet /></main>
+
+    </div>
+
+  );
+};
 
 export default Manager;

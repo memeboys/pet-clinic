@@ -1,42 +1,60 @@
-.navbar{
+.manager_page{
     display: flex;
     flex-direction: row;
-    .menu{
-        padding-left: 0;
-        margin-left: 0;
-        opacity: 100;
-        background-color: #F6F6FC;
-        border: 0;
-        
-        li{
-            &:not(:last-child) {
-                margin-bottom: 6px;
-              }
-
-            .link{
-            font-weight: 400;
-            opacity: 1;
-            font-size: 16px;
-            margin-left: 3px;
-            padding: 10px 120px 10px 30px;
-            display: block;
+    .navbar{
+        .list_header{
+        display: block;
+        font-weight: 400;
+        font-size: 16px;
+        margin-left: 3px;
+        width: 320px;
+        padding: 15px 120px 15px 30px;
+        list-style: none;
+        background-color: #69ade7;
+        border-radius: 1px 5px 5px 1px;
+        color: white !important;
+        filter: drop-shadow(1px 2px 3px #004683);
+        margin-bottom: 6px;
+        }
+        .menu_list{
+            padding-left: 0;
+            margin-left: 0;
+            opacity: 100;
+            background-color: #F6F6FC;
+            border: 0;
             list-style: none;
-            background-color: #69ade7;
-            border-radius: 1px 5px 5px 1px;
-            color: white !important;
-            filter: drop-shadow(1px 2px 3px #004683);
-                &:hover{
-                background-color: #004683;
+            li{
+
+                &:not(:last-child) {
+                    margin-bottom: 6px;
                 }
-                &.active{
-                background-color: #004683;
-            }
+
+                .link{
+                font-weight: 400;
+                font-size: 16px;
+                margin-left: 3px;
+                width: 250px;
+                padding: 10px 100px 10px 30px;
+                display: block;
+                
+                background-color: #69ade7;
+                border-radius: 1px 5px 5px 1px;
+                color: white !important;
+                filter: drop-shadow(1px 2px 3px #004683);
+                    &:hover{
+                    background-color: #004683;
+                    }
+                    &.active{
+                    background-color: #004683;
+                }
+                }
             }
         }
-    }
     .content{
         display: flex;
         flex-grow: 1;
         justify-content: center;
     }
 }    
+}
+
