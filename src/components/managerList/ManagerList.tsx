@@ -7,7 +7,7 @@ const Manager:React.FC = () => {
   const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {
-    setTimeout(() => setCategories(['News', 'Medicine', 'something else']), 1000);
+    setTimeout(() => setCategories(['News', 'Medicine']), 500);
   }, []);
 
   const activeClass = ({ isActive }:{ isActive:boolean }) => (clsx(classes.link, { [classes.active]: isActive }));
@@ -21,7 +21,7 @@ const Manager:React.FC = () => {
             <li key={category}>
               <NavLink
                 to={category}
-                className={(isActive) => activeClass(isActive)}
+                className={activeClass}
               >
                 {category}
               </NavLink>
@@ -30,7 +30,7 @@ const Manager:React.FC = () => {
 
         </ul>
       </aside>
-      <main className={classes.content}><Outlet /></main>
+      <main className={classes.manager_content}><Outlet /></main>
 
     </div>
 

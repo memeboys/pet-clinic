@@ -3,18 +3,20 @@
     flex-direction: row;
     .navbar{
         .list_header{
-        display: block;
         font-weight: 400;
         font-size: 16px;
+        margin-bottom: 10px;
         margin-left: 3px;
-        width: 320px;
-        padding: 15px 120px 15px 30px;
-        list-style: none;
+        width: 260px;
+        height: 55px;
+        display: flex;
+        padding-left: 30px;
+        justify-content: flex-start;
+        align-items: center;
         background-color: #69ade7;
         border-radius: 1px 5px 5px 1px;
         color: white !important;
-        filter: drop-shadow(1px 2px 3px #004683);
-        margin-bottom: 6px;
+        filter: drop-shadow(3px 3px 2px #004683);
         }
         .menu_list{
             padding-left: 0;
@@ -24,37 +26,39 @@
             border: 0;
             list-style: none;
             li{
-
-                &:not(:last-child) {
-                    margin-bottom: 6px;
-                }
-
+                margin-top: 6px;
+                filter: drop-shadow(3px 3px 2px #004683);
                 .link{
+                box-sizing: border-box;
                 font-weight: 400;
                 font-size: 16px;
-                margin-left: 3px;
+                margin-left: 13px;
                 width: 250px;
-                padding: 10px 100px 10px 30px;
-                display: block;
-                
+                height: 50px;
+                display: flex;
+                padding-left: 30px;
+                justify-content: flex-start;
+                align-items: center;
                 background-color: #69ade7;
-                border-radius: 1px 5px 5px 1px;
+                border-radius: 5px 5px 5px 5px;
                 color: white !important;
-                filter: drop-shadow(1px 2px 3px #004683);
                     &:hover{
                     background-color: #004683;
+                    transition: 0.3s;
+                    transition-delay: 0.1s;
+                    transition-property: background-color;
                     }
                     &.active{
                     background-color: #004683;
-                }
+                    }
+                    }
                 }
             }
-        }
-    .content{
+        }    
+    .manager_content{
         display: flex;
         flex-grow: 1;
         justify-content: center;
     }
-}    
 }
 
