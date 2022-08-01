@@ -5,17 +5,17 @@
         .list_header{
         font-weight: 400;
         font-size: 16px;
-        margin-bottom: 10px;
         margin-left: 3px;
-        width: 260px;
-        height: 55px;
+        width: 250px;
+        height: 50px;
         display: flex;
         padding-left: 30px;
         justify-content: flex-start;
         align-items: center;
-        background-color: #69ade7;
+        background-color: #1d39c4;
         border-radius: 1px 5px 5px 1px;
         color: white !important;
+        border: 2px solid #030852;
         filter: drop-shadow(3px 3px 2px #004683);
         }
         .menu_list{
@@ -32,7 +32,7 @@
                 box-sizing: border-box;
                 font-weight: 400;
                 font-size: 16px;
-                margin-left: 13px;
+                margin-left: 3px;
                 width: 250px;
                 height: 50px;
                 display: flex;
@@ -41,15 +41,16 @@
                 align-items: center;
                 background-color: #69ade7;
                 border-radius: 5px 5px 5px 5px;
+                border: 2px solid #096dd9;
                 color: white !important;
                     &:hover{
-                    background-color: #004683;
+                    background-color: #87cafa;
                     transition: 0.3s;
                     transition-delay: 0.1s;
                     transition-property: background-color;
                     }
                     &.active{
-                    background-color: #004683;
+                    background-color: #87cafa;
                     }
                     }
                 }
