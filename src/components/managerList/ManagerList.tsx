@@ -6,36 +6,28 @@ import classes from './ManagerList.module.scss';
 const Manager:React.FC = () => {
   const activeClass = ({ isActive }:{ isActive:boolean }) => (clsx(classes.link, { [classes.active]: isActive }));
 
+  const categories = [
+    { name: 'Новости', pathName: 'news' },
+    { name: 'Лекарства', pathName: 'medicines' },
+    { name: 'Контакты', pathName: 'contacts' },
+  ];
+
   return (
     <div className={classes.manager_page}>
       <aside className={classes.navbar}>
         <header className={classes.list_header}>Категории</header>
         <ul className={classes.menu_list}>
+          {categories.map((category) => (
+            <li key={category.name}>
+              <NavLink
+                to={category.pathName}
+                className={activeClass}
+              >
+                {category.name}
+              </NavLink>
+            </li>
+          ))}
 
-          <li>
-            <NavLink
-              to="news"
-              className={activeClass}
-            >
-              Новости
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="medicines"
-              className={activeClass}
-            >
-              Лекарства
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="contacts"
-              className={activeClass}
-            >
-              Контакты
-            </NavLink>
-          </li>
         </ul>
       </aside>
       <main className={classes.manager_content}><Outlet /></main>
