@@ -6,6 +6,7 @@ import CreateNewsPage from '../pages/create-news-page/CreateNewsPage';
 import { Header } from '../components/header/Header';
 import MainPage from '../pages/main-page/MainPage';
 import ManagerPage from '../pages/manager-page/ManagerPage';
+import CreateMedicinePage from '../pages/create-medicine-page/CreateMedicinePage';
 import 'antd/dist/antd.css';
 
 const App: FC = () => (
@@ -23,6 +24,7 @@ const App: FC = () => (
           <Route path="Medicine" element={<h3>Лекарства</h3>} />
         </Route>
         <Route path="/create-news" element={<CreateNewsPage />} />
+        <Route path="/create-medicine" element={<CreateMedicinePage />} />
       </Routes>
     </div>
   </Router>
