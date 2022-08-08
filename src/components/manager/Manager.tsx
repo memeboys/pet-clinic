@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { Outlet, NavLink } from 'react-router-dom';
-import classes from './ManagerList.module.scss';
+import classes from './Manager.module.scss';
 
 const Manager:React.FC = () => {
   const activeClass = ({ isActive }:{ isActive:boolean }) => (clsx(classes.link, { [classes.active]: isActive }));
