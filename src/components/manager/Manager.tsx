@@ -8,7 +8,7 @@ const Manager:React.FC = () => {
 
   const categories = [
     { name: 'Новости', pathName: 'news' },
-    { name: 'Лекарства', pathName: 'medicines' },
+    { name: 'Лекарства', pathName: 'medicine' },
     { name: 'Контакты', pathName: 'contacts' },
   ];
 

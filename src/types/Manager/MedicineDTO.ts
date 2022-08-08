@@ -3,7 +3,7 @@ import { WithId } from '../UtilityTypes';
 export interface MedicineData{
   manufactureName: string,
   name: string,
-  icon: string,
+  iconUrl: string,
   description: string
 }
 export type MedicineDto = WithId<MedicineData>;
