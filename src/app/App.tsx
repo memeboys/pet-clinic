@@ -11,10 +11,6 @@ import ManagerPage from '../pages/manager-page/ManagerPage';
 // import DoctorPage from '../pages/doctor-page/DoctorPage';
 // import AdminPage from '../pages/admin-page/AdminPage';
 import { Role } from '../types/AuthDTO';
-// import DoctorPage from '../pages/doctor-page/DoctorPage';
-// import AdminPage from '../pages/admin-page/AdminPage';
-import { Role } from '../types/AuthDTO';
-
 import 'antd/dist/antd.css';
 
 const App: FC = () => (
