@@ -11,6 +11,10 @@ import ManagerPage from '../pages/manager-page/ManagerPage';
 // import DoctorPage from '../pages/doctor-page/DoctorPage';
 // import AdminPage from '../pages/admin-page/AdminPage';
 import { Role } from '../types/AuthDTO';
+// import DoctorPage from '../pages/doctor-page/DoctorPage';
+// import AdminPage from '../pages/admin-page/AdminPage';
+import { Role } from '../types/AuthDTO';
+
 import 'antd/dist/antd.css';
 
 const App: FC = () => (
@@ -26,8 +30,14 @@ const App: FC = () => (
           <Route path="clientPage" element={<ClientPage />} />
         </Route>
         <Route path="manager" element={<PrivateRoute role={Role.MANAGER} />}>
-          <Route path="managerPage" element={<ManagerPage />} />
+          <Route path="managerPage/*" element={<ManagerPage />}>
+            <Route index element={<h3>Главная страница менеджера</h3>} />
+            <Route path="News" element={<h3>Новости</h3>} />
+            <Route path="Medicine" element={<h3>Лекарства</h3>} />
+          </Route>
         </Route>
+        <Route path="/create-news" element={<CreateNewsPage />} />
+
         {/* Приватные роуты админа и доктора для разграничения доступа */}
         {/* <Route path="admin" element={<PrivateRoute role={Role.ADMIN} />}>
           <Route path="adminPage" element={<AdminPage />} />
@@ -36,7 +46,7 @@ const App: FC = () => (
           <Route path="doctorPage" element={<DoctorPage />} />
         </Route>
          */}
-        <Route path="/create-news" element={<CreateNewsPage />} />
+
       </Routes>
     </div>
   </Router>

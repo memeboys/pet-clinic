@@ -1,5 +1,5 @@
 import React from 'react';
-import Manager from '../../components/managerList/ManagerList';
+import Manager from '../../components/manager/Manager';
 
 function ManagerPage ():React.ReactElement {
   return <Manager />;
