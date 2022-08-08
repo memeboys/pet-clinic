@@ -3,23 +3,22 @@ import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import { Alert } from 'antd';
 import MedicineService from '../../../services/manager/MedicineService';
-import { MedicineDto } from '../../../types/Manager/MedicineDTO';
+import { MedicineData } from '../../../types/Manager/MedicineDTO';
 import classes from './CreateMedicine.module.scss';
 
 const CreateMedicine :React.FC = () => {
-  const [medicine, setMedicine] = useState<MedicineDto | null>(null);
+  const [medicine, setMedicine] = useState<MedicineData | null>(null);
   const [error, setError] = useState<boolean>(false);
 
   const validationsSchema = yup.object().shape({
-    id: yup.number().required('Id required'),
     manufactureName: yup.string().required('Manufacture Name is required'),
     name: yup.string().required(' Name is required'),
-    icon: yup.string().required(' Icon is required'),
+    iconUrl: yup.string().required(' Icon is required'),
     description: yup.string().required(' Description is required'),
   });
 
   const onSubmit = async (
-    data:MedicineDto,
+    data:MedicineData,
   ) => {
     setError(false);
     MedicineService.createMedicine(data)
@@ -27,7 +26,7 @@ const CreateMedicine :React.FC = () => {
         setMedicine(result.data);
       })
       .catch((err) => {
-        if (err.response.status === 403) {
+        if (err) {
           setError(true);
         }
       });
@@ -37,7 +36,7 @@ const CreateMedicine :React.FC = () => {
     <div className={classes.container}>
       <Formik
         initialValues={{
-          id: 0, manufactureName: '', name: '', icon: '', description: '',
+          manufactureName: '', name: '', iconUrl: '', description: '',
         }}
         onSubmit={(values) => { onSubmit(values); }}
         validationSchema={validationsSchema}
@@ -58,22 +57,6 @@ const CreateMedicine :React.FC = () => {
                 onClose={() => setError(false)}
               />
               )}
-              <div className={classes.input_wrapper}>
-                <label htmlFor="id">
-                  Id
-                  <Field
-                    id="id"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.id}
-                    placeholder="Id"
-                    type="number"
-                    name="id"
-                    className={classes.input}
-                  />
-                  {touched.id && errors.id && <span className={classes.input_wrapper__error}>{errors.id}</span>}
-                </label>
-              </div>
               <div className={classes.input_wrapper}>
                 <label htmlFor="manufactureName">
                   Manufacture Name
@@ -111,16 +94,16 @@ const CreateMedicine :React.FC = () => {
                 <label htmlFor="icon">
                   Icon
                   <Field
-                    id="icon"
+                    id="iconUrl"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.icon}
+                    value={values.iconUrl}
                     type="text"
-                    name="icon"
+                    name="iconUrl"
                     placeholder="Icon address"
                     className={classes.input}
                   />
-                  {touched.icon && errors.icon && <span className={classes.input_wrapper__error}>{errors.icon}</span>}
+                  {touched.iconUrl && errors.iconUrl && <span className={classes.input_wrapper__error}>{errors.iconUrl}</span>}
                 </label>
               </div>
               <div className={classes.input_wrapper}>
