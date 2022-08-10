@@ -5,7 +5,13 @@ import AuthPage from '../pages/auth-page/AuthPage';
 import CreateNewsPage from '../pages/create-news-page/CreateNewsPage';
 import { Header } from '../components/header/Header';
 import MainPage from '../pages/main-page/MainPage';
+import PrivateRoute from '../components/private-route/PrivateRoute';
+import ClientPage from '../pages/client-page/ClientPage';
 import ManagerPage from '../pages/manager-page/ManagerPage';
+import CreateMedicinePage from '../pages/create-medicine-page/CreateMedicinePage';
+// import DoctorPage from '../pages/doctor-page/DoctorPage';
+// import AdminPage from '../pages/admin-page/AdminPage';
+import { Role } from '../types/AuthDTO';
 import 'antd/dist/antd.css';
 
 const App: FC = () => (
@@ -17,12 +23,28 @@ const App: FC = () => (
         <Route path="/pet/:petId" element={<MainPage />} />
         <Route path="/sign-up" element={<RegPage />} />
         <Route path="/sign-in" element={<AuthPage />} />
-        <Route path="manager/*" element={<ManagerPage />}>
-          <Route index element={<h3>Главная страница менеджера</h3>} />
-          <Route path="News" element={<h3>Новости</h3>} />
-          <Route path="Medicine" element={<h3>Лекарства</h3>} />
+        <Route path="client" element={<PrivateRoute role={Role.CLIENT} />}>
+          <Route path="clientPage" element={<ClientPage />} />
         </Route>
+        <Route path="manager" element={<PrivateRoute role={Role.MANAGER} />}>
+          <Route path="managerPage/*" element={<ManagerPage />}>
+            <Route index element={<h3>Главная страница менеджера</h3>} />
+            <Route path="news" element={<h3>Новости</h3>} />
+            <Route path="medicine" element={<h3>Лекарства</h3>} />
+          </Route>
+        </Route>
+        <Route path="create-medicine" element={<CreateMedicinePage />} />
         <Route path="/create-news" element={<CreateNewsPage />} />
+
+        {/* Приватные роуты админа и доктора для разграничения доступа */}
+        {/* <Route path="admin" element={<PrivateRoute role={Role.ADMIN} />}>
+          <Route path="adminPage" element={<AdminPage />} />
+        </Route>
+        <Route path="doctor" element={<PrivateRoute role={Role.DOCTOR} />}>
+          <Route path="doctorPage" element={<DoctorPage />} />
+        </Route>
+         */}
+
       </Routes>
     </div>
   </Router>
