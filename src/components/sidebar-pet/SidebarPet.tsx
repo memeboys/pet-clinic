@@ -18,10 +18,10 @@ interface DeletePetProps {
 }
 
 const DeletePet: React.FC<DeletePetProps> = ({ onDelete }) => (
-  <div className={classes.deleteArticle}>
+  <div className={classes.deletePet}>
     <Row>
       <InfoCircleFilled />
-      <p>Are you sure to delete this article?</p>
+      <p>Are you sure to delete this pet?</p>
     </Row>
     <Row justify="end">
       <Space>
