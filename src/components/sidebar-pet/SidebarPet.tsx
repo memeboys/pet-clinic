@@ -4,6 +4,7 @@ import { Collapse } from 'antd';
 import { CollapseProps } from 'antd/lib/collapse/Collapse';
 import AuthService from '../../services/AuthService';
 import { ClientDto } from '../../types/ClientDTO';
+import addBtnIcon from '../../assets/icons/plus-svgrepo-com.svg';
 import Star_Platinum from '../../assets/images/StarPlatinum.png'; // пока нету картинки питомца
 import './AntdStyle.scss';
 import classes from './SidebarPet.module.scss';
@@ -43,6 +44,12 @@ const SidebarPet: React.FC = () => {
 
   return (
     <Collapse expandIconPosition="end" className={classes.container} onChange={handleChange} accordion>
+      <div className={classes.add}>
+        <h3>Ваши питомцы</h3>
+        <button className={classes.add__btn} type="button">
+          <img src={addBtnIcon} alt="кнопка добавить" />
+        </button>
+      </div>
       {generatePet()}
     </Collapse>
   );
