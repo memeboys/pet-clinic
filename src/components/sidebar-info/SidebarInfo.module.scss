@@ -71,7 +71,29 @@
 }
 
 .span {
-  height: 165px;
-  min-width: 240px;
-  max-width: 240px;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.swiper {
+  width: 100%;
+}
+.swiperNavPrev, .swiperNavNext{
+  position: absolute;
+  cursor: pointer;
+  z-index: 1;
+  top: 40%;
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.swiperNavPrev {
+  left: 0;
+  background-image: url(../../assets/icons/left-arrow.svg);
+}
+.swiperNavNext {
+  right: 0;
+  background-image: url(../../assets/icons/right-arrow.svg);
 }
