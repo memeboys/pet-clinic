@@ -5,9 +5,12 @@
 .ant-collapse {
   border: none !important;
 }
-
+.ant-collapse-item .ant-collapse-content {
+  width: 100%;
+}
 .ant-collapse-content-box {
   border-right: 1px solid #d9d9d9;
   border-left: 1px solid #d9d9d9;
   border-radius: 4px;
 }
+
