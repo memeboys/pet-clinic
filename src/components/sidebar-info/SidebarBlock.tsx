@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
+import SwiperCore, { Navigation } from 'swiper';
 import 'swiper/modules/navigation/navigation.scss';
 import 'swiper/swiper.scss';
 import classes from './SidebarInfo.module.scss';
@@ -12,6 +12,7 @@ type PropTypes = {
 const SidebarBlock: React.FC<PropTypes> = ({ header, text }) => {
   const navigationPrevRef = useRef<HTMLDivElement>(null);
   const navigationNextRef = useRef<HTMLDivElement>(null);
+  SwiperCore.use([Navigation]);
 
   return (
     <div className={classes.block}>
@@ -28,11 +29,17 @@ const SidebarBlock: React.FC<PropTypes> = ({ header, text }) => {
         simulateTouch={false}
         navigation={{
           prevEl: navigationPrevRef.current,
-          nextEl: navigationNextRef.current,
+          nextEl: navigationPrevRef.current,
         }}
-        onInit={(swiper) => {
-          swiper.navigation.init();
-          swiper.navigation.update();
+        onInit={(swiper: SwiperCore) => {
+          if (typeof swiper.params.navigation !== 'boolean') {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, no-param-reassign
+            swiper.params.navigation!.prevEl = navigationPrevRef.current;
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, no-param-reassign
+            swiper.params.navigation!.nextEl = navigationNextRef.current;
+            swiper.navigation.init();
+            swiper.navigation.update();
+          }
         }}
       >
         <SwiperSlide className={classes.span} tag="span">{text}</SwiperSlide>
