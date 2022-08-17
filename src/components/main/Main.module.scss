@@ -1,7 +1,9 @@
 .main {
-  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  width: 840px;
   margin: 0 auto;
-  flex: 1 0 auto;
+  flex: 0 1 auto;
   margin-top: 3rem;
 }
 
