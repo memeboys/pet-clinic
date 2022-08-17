@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion, no-param-reassign */
 import React, { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation } from 'swiper';
@@ -33,9 +34,7 @@ const SidebarBlock: React.FC<PropTypes> = ({ header, text }) => {
         }}
         onInit={(swiper: SwiperCore) => {
           if (typeof swiper.params.navigation !== 'boolean') {
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, no-param-reassign
             swiper.params.navigation!.prevEl = navigationPrevRef.current;
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, no-param-reassign
             swiper.params.navigation!.nextEl = navigationNextRef.current;
             swiper.navigation.init();
             swiper.navigation.update();
