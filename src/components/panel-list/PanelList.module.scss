@@ -2,7 +2,14 @@
   background-color: #69ade7;
   border-radius: 4px !important;
   border: none;
-
+  &__ecto {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    b {
+      padding-right: 5px ;
+    }
+  }
   &__list {
     list-style: none;
     padding: 0;
