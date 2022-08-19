@@ -17,3 +17,20 @@
   top: 7px;
   border-radius: 50%;
 }
+
+.deletePet {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+
+  svg {
+    width: 1.4rem;
+    height: 1.4rem;
+    margin-right: 0.5rem;
+
+    path {
+      fill: #faad14;
+    }
+  }
+}
