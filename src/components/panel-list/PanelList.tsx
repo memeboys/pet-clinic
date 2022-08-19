@@ -15,7 +15,7 @@ const PanelList: React.FC = () => {
   const { petId } = useParams();
 
   useEffect(() => {
-    PetService.getPet(petId || '0')
+    PetService.getPet(petId || '1')
       .then(({ data }) => {
         setPetData(data);
       });
