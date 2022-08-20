@@ -150,8 +150,8 @@ const EditPet: React.FC<EditPetProps> = ({ pet }) => {
                     name="petType"
                     className={classes.input}
                   >
-                    <option value={PetType.CAT}>Cat</option>
-                    <option value={PetType.DOG}>Dog</option>
+                    <option value={PetType.CAT}>Кот</option>
+                    <option value={PetType.DOG}>Собака</option>
                   </Field>
                   {touched.petType && errors.petType && <span className={classes.input_wrapper__error}>{errors.petType}</span>}
                 </label>
