@@ -8,8 +8,6 @@ import classes from './EditPet.module.scss';
 export interface EditPetProps {
   pet: PetDTO;
 }
-const birthdayValid = /^(?:(?:(?:0?[13578]|1[02])(\/|-|\.)31)\1|(?:(?:0?[1,3-9]|1[0-2])(\/|-|\.)(?:29|30)\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:0?2(\/|-|\.)29\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:(?:0?[1-9])|(?:1[0-2]))(\/|-|\.)(?:0?[1-9]|1\d|2[0-8])\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
-
 const EditPet: React.FC<EditPetProps> = ({ pet }) => {
 
   const validationSchema = yup.object().shape({
@@ -19,7 +17,7 @@ const EditPet: React.FC<EditPetProps> = ({ pet }) => {
     color: yup.string().required('Поле обязательно для заполнения'),
     description: yup.string().required('Поле обязательно для заполнения'),
     avatar: yup.string().url("Аватар должен быть корректным URL").required('Поле обязательно для заполнения'),
-    birthDay: yup.string().matches(birthdayValid, 'Enter correct date in format DD.MM.YYYY').required('Поле обязательно для заполнения'),
+    birthDay: yup.string().required('Поле обязательно для заполнения'),
   });
 
   const onSubmit = async (
@@ -131,6 +129,7 @@ const EditPet: React.FC<EditPetProps> = ({ pet }) => {
                   Дата рождения
                   <Field
                     id="birthDay"
+                    type="date"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.birthDay}
