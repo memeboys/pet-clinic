@@ -20,6 +20,14 @@
   border-radius: 6px;
 }
 
+.form_title {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 28px;
+  display: flex;
+  justify-content: center;
+}
+
 .input {
   box-sizing: border-box;
 
@@ -34,8 +42,11 @@
   }
 }
 
+.checkbox {
+  margin-right: 10px;
+}
+
 button[type="submit"] {
-  width: 80px;
   height: 40px;
   color: #ffffff;
   background: #1890ff;

@@ -3,9 +3,6 @@ export enum PetType {
   DOG = 'DOG',
 }
 
-
-
-
 export enum PetGender {
   MALE = "MALE",
   FEMALE = "FEMALE",
@@ -15,7 +12,6 @@ export enum PetGender {
 export enum PetSize {
   SMALL = 'SMALL',
 }
-
 
 export interface PetDTO {
   id: number;
