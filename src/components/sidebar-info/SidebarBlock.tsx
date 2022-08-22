@@ -1,53 +1,52 @@
-import React, { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-non-null-assertion, no-param-reassign */
+import React, { useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Navigation } from 'swiper';
+import 'swiper/modules/navigation/navigation.scss';
+import 'swiper/swiper.scss';
 import classes from './SidebarInfo.module.scss';
-import left_arrow from '../../assets/icons/left-arrow.svg';
-import right_arrow from '../../assets/icons/right-arrow.svg';
 
 type PropTypes = {
-  header: string,
-  text: string
+  header: string;
+  text: string;
 };
-
 const SidebarBlock: React.FC<PropTypes> = ({ header, text }) => {
-  const [offset, setOffset] = useState(0);
-  const handleLeftClick = () => {
-    setOffset((currentOffset) => {
-      const newOffset = currentOffset + 280;
-
-      return Math.min(newOffset, 0);
-    });
-  };
-  const handleRightClick = () => {
-    setOffset((currentOffset) => {
-      const newOffset = currentOffset - 280;
-
-      return Math.max(newOffset, -560);
-    });
-  };
+  const navigationPrevRef = useRef<HTMLDivElement>(null);
+  const navigationNextRef = useRef<HTMLDivElement>(null);
+  SwiperCore.use([Navigation]);
 
   return (
     <div className={classes.block}>
-      <header className={classes.header}>
-        {header}
-      </header>
-      <main className={classes.main}>
-        <input className={classes.svg_l} onClick={handleLeftClick} type="image" src={left_arrow} alt="стрелка" />
-        <div
-          className={classes.al_div_container}
-          style={{ transform: `translateX(${offset}px)` }}
-        >
-          <span className={classes.span}>
-            { text }
-          </span>
-          <span className={classes.span}>
-            { text }
-          </span>
-          <span className={classes.span}>
-            { text }
-          </span>
-        </div>
-        <input className={classes.svg} onClick={handleRightClick} type="image" src={right_arrow} alt="стрелка" />
-      </main>
+      <header className={classes.header}>{header}</header>
+      <Swiper
+        tag="main"
+        className={classes.swiper}
+        modules={[Navigation]}
+        loop
+        speed={500}
+        spaceBetween={0}
+        slidesPerView={1}
+        slidesPerGroup={1}
+        simulateTouch={false}
+        navigation={{
+          prevEl: navigationPrevRef.current,
+          nextEl: navigationPrevRef.current,
+        }}
+        onInit={(swiper: SwiperCore) => {
+          if (typeof swiper.params.navigation !== 'boolean') {
+            swiper.params.navigation!.prevEl = navigationPrevRef.current;
+            swiper.params.navigation!.nextEl = navigationNextRef.current;
+            swiper.navigation.init();
+            swiper.navigation.update();
+          }
+        }}
+      >
+        <SwiperSlide className={classes.span} tag="span">{text}</SwiperSlide>
+        <SwiperSlide className={classes.span} tag="span">{text}</SwiperSlide>
+        <SwiperSlide className={classes.span} tag="span">{text}</SwiperSlide>
+        <div className={classes.swiperNavPrev} ref={navigationPrevRef} />
+        <div className={classes.swiperNavNext} ref={navigationNextRef} />
+      </Swiper>
     </div>
   );
 };

@@ -34,6 +34,7 @@
 }
 
 .main {
+
   display: flex;
   align-items: center;
   text-align: center;
@@ -42,38 +43,30 @@
   overflow: hidden;
 }
 
-.svg {
-  position: absolute;
-  right: 25px;
-  z-index: 1;
-}
-
-.svg:hover {
-  transform: scale(1.2);
-}
-
-.svg_l {
-  position: absolute;
-  right: 285px;
-  z-index: 1;
-}
-
-.svg_l:hover {
-  transform: scale(1.2);
-}
-
-.al_div_container {
-  height: 100%;
-  display: flex;
-  transition: translate;
-  transition-property: transform;
-  transition-duration: 300ms;
-  transition-timing-function: ease-in-out;
-}
-
 .span {
-  height: 165px;
-  min-width: 240px;
-  max-width: 240px;
-  margin: 0px 20px 0px 20px;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.swiper {
+  width: 100%;
+}
+.swiperNavPrev, .swiperNavNext{
+  position: absolute;
+  cursor: pointer;
+  z-index: 1;
+  top: 40%;
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.swiperNavPrev {
+  left: 0;
+  background-image: url(../../assets/icons/left-arrow.svg);
+}
+.swiperNavNext {
+  right: 0;
+  background-image: url(../../assets/icons/right-arrow.svg);
 }
