@@ -1,12 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Collapse } from 'antd';
+import {
+  Collapse, Row, Col, Space, Button, Dropdown,
+} from 'antd';
 import { CollapseProps } from 'antd/lib/collapse/Collapse';
+import { EditOutlined, DeleteOutlined, InfoCircleFilled } from '@ant-design/icons';
 import AuthService from '../../services/AuthService';
 import { ClientDto } from '../../types/ClientDTO';
 import Star_Platinum from '../../assets/images/StarPlatinum.png'; // пока нету картинки питомца
 import './AntdStyle.scss';
 import classes from './SidebarPet.module.scss';
+import PetServices from '../../services/PetServices';
+import { PetDTO } from '../../types/PetsDTO';
+
+interface DeletePetProps {
+  onDelete: () => void;
+}
+
+const DeletePet: React.FC<DeletePetProps> = ({ onDelete }) => (
+  <div className={classes.deletePet}>
+    <Row>
+      <InfoCircleFilled />
+      <p>Are you sure to delete this pet?</p>
+    </Row>
+    <Row justify="end">
+      <Space>
+        <Button size="small">No</Button>
+        <Button type="primary" size="small" onClick={onDelete}>
+          Yes
+        </Button>
+      </Space>
+    </Row>
+  </div>
+);
 
 const SidebarPet: React.FC = () => {
   const { Panel } = Collapse;
@@ -26,6 +52,17 @@ const SidebarPet: React.FC = () => {
     }
   };
 
+  const handlePetDelete = (pet: PetDTO) => {
+    PetServices.deletePet(pet.id)
+      .then(() => {
+        if (!clientData) return;
+        setClientData({
+          ...clientData,
+          pets: clientData.pets.filter((currentPet) => currentPet.id !== pet.id),
+        });
+      });
+  };
+
   function generatePet () {
     return clientData?.pets.map((pet) => (
       <Panel
@@ -34,9 +71,27 @@ const SidebarPet: React.FC = () => {
         key={pet.id}
         extra={<img src={Star_Platinum /* pet.avatar */} alt="avatar" className={classes.img} />}
       >
-        <div>
-          <p>Тут будет какой-то функционал, наверное</p>
-        </div>
+        <Row justify="center">
+          <Col>
+            <Space>
+              <Button type="primary">
+                Редактировать
+                <EditOutlined />
+              </Button>
+              <Dropdown
+                overlay={<DeletePet onDelete={() => handlePetDelete(pet)} />}
+                trigger={['click']}
+                placement="bottomLeft"
+                arrow
+              >
+                <Button type="primary">
+                  Удалить
+                  <DeleteOutlined />
+                </Button>
+              </Dropdown>
+            </Space>
+          </Col>
+        </Row>
       </Panel>
     ));
   }
