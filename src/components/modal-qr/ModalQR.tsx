@@ -7,7 +7,7 @@ import { Modal } from 'antd';
 import { PetContactDto } from '../../types/PetContactDTO';
 
 import styles from './Modal.module.scss';
-import PetContactQrCode from '../../services/PetContactQrCode';
+import PetContactQrCode from '../../services/client/PetContactQrCode';
 import Spinner from '../Spinner';
 
 interface ModalProps {
