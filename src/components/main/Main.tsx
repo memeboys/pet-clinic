@@ -11,12 +11,12 @@ const Main: React.FC = () => (
     <SidebarPet />
     <main className={classes.main}>
       <PanelList />
-      <FilterForm initialValues={{ email: "", login: "" }} onChange={(value) => console.log(value)}>
+      <FilterForm initialValues={{ email: '', login: '' }} onChange={(value) => console.log(value)}>
         <FilterFormField type="text" name="email" label="Email" />
         <FilterFormField type="text" name="login" label="Login" />
       </FilterForm>
 
-      <FilterForm initialValues={{ manufacturer: "", isLegal: true }} onChange={(value) => console.log(value)}>
+      <FilterForm initialValues={{ manufacturer: '', isLegal: true }} onChange={(value) => console.log(value)}>
         <FilterFormField type="text" name="manufacturer" label="Manufacturer" />
         <FilterFormField type="checkbox" name="isLegal" label="Is legal" />
       </FilterForm>

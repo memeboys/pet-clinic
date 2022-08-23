@@ -1,4 +1,6 @@
-import { Field, Form, Formik, useFormikContext } from 'formik';
+import {
+  Field, Form, Formik, useFormikContext,
+} from 'formik';
 import { debounce } from 'lodash';
 import React, { useMemo } from 'react';
 
@@ -6,10 +8,11 @@ const SubmitOnChangeToken: React.FC = () => {
   const { values, submitForm } = useFormikContext();
   const debounceSubmit = useMemo(() => debounce(submitForm, 1000), [submitForm]);
   React.useEffect(() => {
-    debounceSubmit()
+    debounceSubmit();
   }, [values, debounceSubmit]);
+
   return null;
-}
+};
 
 export interface FilterFormProps<T> {
   initialValues: T;
@@ -17,7 +20,7 @@ export interface FilterFormProps<T> {
   children: React.ReactNode;
 }
 
-export default function FilterForm<T>({ initialValues, onChange, children }: FilterFormProps<T>) {
+export default function FilterForm<T> ({ initialValues, onChange, children }: FilterFormProps<T>) {
   return (
     <Formik
       initialValues={initialValues}
@@ -39,11 +42,9 @@ export interface FilterFormFieldProps {
   readonly name: string;
 }
 
-export const FilterFormField: React.FC<FilterFormFieldProps> = ({ label, type, name }) => {
-  return (
-    <label>
-      {label}
-      <Field type={type} name={name} />
-    </label>
-  )
-}
+export const FilterFormField: React.FC<FilterFormFieldProps> = ({ label, type, name }) => (
+  <label>
+    {label}
+    <Field type={type} name={name} />
+  </label>
+);
