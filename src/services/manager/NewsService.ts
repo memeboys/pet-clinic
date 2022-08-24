@@ -23,4 +23,12 @@ export default class NewsService {
   static async updateNews (id: number, data: NewsData): Promise<AxiosResponse<ManagerNewsResponseDto>> {
     return axiosInstance.put(`/manager/news/${id}`, data);
   }
+
+  static async publishNews (data: Array<number>): Promise<AxiosResponse> {
+    return axiosInstance.put('/manager/news/publish', data);
+  }
+
+  static async unpublishNews (data: Array<number>): Promise<AxiosResponse> {
+    return axiosInstance.put('/manager/news/unpublish', data);
+  }
 }
