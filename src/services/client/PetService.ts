@@ -10,4 +10,8 @@ export default class PetService {
   static async deletePet (id: PetDTO['id']): Promise<AxiosResponse<void>> {
     return axiosInstance.delete(`/api/client/pet/${id}`);
   }
+
+  static async editPet (id: string, data: PetDTO): Promise<AxiosResponse<PetDTO>> {
+    return axiosInstance.put(`/client/pet/${id}`, data)
+  }
 }
