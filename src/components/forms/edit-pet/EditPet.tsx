@@ -66,7 +66,9 @@ const EditPet: React.FC<EditPetProps> = ({ pet }) => {
                       name="name"
                       className={classes.input}
                     />
-                    {touched.name && errors.name && <span className={classes.input_wrapper__error}>{errors.name}</span>}
+                    { touched.name
+                      && errors.name
+                      && <span className={classes.input_wrapper__error}>{errors.name}</span>}
                   </label>
                 </div>
                 <div className={classes.input_wrapper}>
@@ -80,7 +82,9 @@ const EditPet: React.FC<EditPetProps> = ({ pet }) => {
                       name="weight"
                       className={classes.input}
                     />
-                    {touched.weight && errors.weight && <span className={classes.input_wrapper__error}>{errors.weight}</span>}
+                    { touched.weight
+                      && errors.weight
+                      && <span className={classes.input_wrapper__error}>{errors.weight}</span>}
                   </label>
                 </div>
                 <div className={classes.input_wrapper}>
@@ -94,7 +98,9 @@ const EditPet: React.FC<EditPetProps> = ({ pet }) => {
                       name="breed"
                       className={classes.input}
                     />
-                    {touched.breed && errors.breed && <span className={classes.input_wrapper__error}>{errors.breed}</span>}
+                    { touched.breed
+                      && errors.breed
+                      && <span className={classes.input_wrapper__error}>{errors.breed}</span>}
                   </label>
                 </div>
                 <div className={classes.input_wrapper}>
@@ -108,7 +114,9 @@ const EditPet: React.FC<EditPetProps> = ({ pet }) => {
                       name="color"
                       className={classes.input}
                     />
-                    {touched.color && errors.color && <span className={classes.input_wrapper__error}>{errors.color}</span>}
+                    { touched.color
+                      && errors.color
+                      && <span className={classes.input_wrapper__error}>{errors.color}</span>}
                   </label>
                 </div>
                 <div className={classes.input_wrapper}>
@@ -122,7 +130,9 @@ const EditPet: React.FC<EditPetProps> = ({ pet }) => {
                       name="description"
                       className={classes.input}
                     />
-                    {touched.description && errors.description && <span className={classes.input_wrapper__error}>{errors.description}</span>}
+                    { touched.description
+                      && errors.description
+                      && <span className={classes.input_wrapper__error}>{errors.description}</span>}
                   </label>
                 </div>
                 <div className={classes.input_wrapper}>
@@ -136,7 +146,9 @@ const EditPet: React.FC<EditPetProps> = ({ pet }) => {
                       name="avatar"
                       className={classes.input}
                     />
-                    {touched.avatar && errors.avatar && <span className={classes.input_wrapper__error}>{errors.avatar}</span>}
+                    { touched.avatar
+                      && errors.avatar
+                      && <span className={classes.input_wrapper__error}>{errors.avatar}</span>}
                   </label>
                 </div>
                 <div className={classes.input_wrapper}>
@@ -151,7 +163,9 @@ const EditPet: React.FC<EditPetProps> = ({ pet }) => {
                       name="birthDay"
                       className={classes.input}
                     />
-                    {touched.birthDay && errors.birthDay && <span className={classes.input_wrapper__error}>{errors.birthDay}</span>}
+                    { touched.birthDay
+                      && errors.birthDay
+                      && <span className={classes.input_wrapper__error}>{errors.birthDay}</span>}
                   </label>
                 </div>
                 <div className={classes.input_wrapper}>
@@ -168,7 +182,9 @@ const EditPet: React.FC<EditPetProps> = ({ pet }) => {
                       <option value={PetType.CAT}>Cat</option>
                       <option value={PetType.DOG}>Dog</option>
                     </Field>
-                    {touched.petType && errors.petType && <span className={classes.input_wrapper__error}>{errors.petType}</span>}
+                    { touched.petType
+                      && errors.petType
+                      && <span className={classes.input_wrapper__error}>{errors.petType}</span>}
                   </label>
                 </div>
                 <div className={classes.input_wrapper}>
@@ -186,7 +202,9 @@ const EditPet: React.FC<EditPetProps> = ({ pet }) => {
                       <option value={PetGender.FEMALE}>Женский</option>
                       <option value={PetGender.OTHER}>Другой</option>
                     </Field>
-                    {touched.gender && errors.gender && <span className={classes.input_wrapper__error}>{errors.gender}</span>}
+                    { touched.gender
+                      && errors.gender
+                      && <span className={classes.input_wrapper__error}>{errors.gender}</span>}
                   </label>
                 </div>
                 <div className={classes.input_wrapper}>
@@ -202,7 +220,9 @@ const EditPet: React.FC<EditPetProps> = ({ pet }) => {
                     >
                       <option value={PetSize.SMALL}>SMALL</option>
                     </Field>
-                    {touched.gender && errors.gender && <span className={classes.input_wrapper__error}>{errors.gender}</span>}
+                    { touched.gender
+                      && errors.gender
+                      && <span className={classes.input_wrapper__error}>{errors.gender}</span>}
                   </label>
                 </div>
                 <button
