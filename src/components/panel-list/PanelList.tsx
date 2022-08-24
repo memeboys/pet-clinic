@@ -16,7 +16,6 @@ const PanelList: React.FC = () => {
   const [clientData, setClientData] = useState<ClientDto | null>(null);
   const [ectoParasites, setEctoParasites] = useState<EctoParasites | null>(null);
   const { petId } = useParams();
-  console.log(ectoParasites);
   useEffect(() => {
     PetService.getPet(petId || '0')
       .then(({ data }) => {
@@ -125,7 +124,7 @@ const PanelList: React.FC = () => {
       <Panel className={classes.panel} showArrow={false} header="Обработка от внешних паразитов" key="6">
         <div className={classes.panel__ecto}>
           <b>Дата вакцинации:</b>
-          {ectoParasites === null ? <span>loading...</span> : ectoParasites.date}
+          {!ectoParasites ? <span>loading...</span> : ectoParasites.date}
         </div>
       </Panel>
       <Panel className={classes.panel} showArrow={false} header="Записи о репродукции" key="7">
