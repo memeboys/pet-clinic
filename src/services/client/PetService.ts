@@ -12,6 +12,6 @@ export default class PetService {
   }
 
   static async editPet (id: string, data: PetDTO): Promise<AxiosResponse<PetDTO>> {
-    return axiosInstance.put(`/client/pet/${id}`, data)
+    return axiosInstance.put(`/client/pet/${id}`, data);
   }
 }
