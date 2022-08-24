@@ -20,7 +20,7 @@ export interface FilterFormProps<T> {
   children: React.ReactNode;
 }
 
-export default function FilterForm<T> ({ initialValues, onChange, children }: FilterFormProps<T>) {
+export default function FilterForm<T> ({ initialValues, onChange, children }: FilterFormProps<T>): JSX.Element {
   return (
     <Formik
       initialValues={initialValues}
@@ -37,14 +37,14 @@ export default function FilterForm<T> ({ initialValues, onChange, children }: Fi
 }
 
 export interface FilterFormFieldProps {
-  readonly label: string;
+  readonly title: string;
   readonly type: string;
   readonly name: string;
 }
 
-export const FilterFormField: React.FC<FilterFormFieldProps> = ({ label, type, name }) => (
-  <label>
-    {label}
-    <Field type={type} name={name} />
+export const FilterFormField: React.FC<FilterFormFieldProps> = ({ title, type, name }) => (
+  <label htmlFor={name}>
+    {title}
+    <Field type={type} name={name} id={name} />
   </label>
 );

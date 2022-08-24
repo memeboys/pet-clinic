@@ -11,7 +11,7 @@ import addBtnIcon from '../../assets/icons/plus-svgrepo-com.svg';
 import Star_Platinum from '../../assets/images/StarPlatinum.png'; // пока нету картинки питомца
 import './AntdStyle.scss';
 import classes from './SidebarPet.module.scss';
-import PetServices from '../../services/PetServices';
+import PetService from '../../services/client/PetService';
 import { PetDTO } from '../../types/PetsDTO';
 
 interface DeletePetProps {
@@ -54,7 +54,7 @@ const SidebarPet: React.FC = () => {
   };
 
   const handlePetDelete = (pet: PetDTO) => {
-    PetServices.deletePet(pet.id)
+    PetService.deletePet(pet.id)
       .then(() => {
         if (!clientData) return;
         setClientData({
