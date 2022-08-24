@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
-import { PetContactRequestDto } from '../types/PetContactDTO';
-import { axiosInstance } from './index';
+import { PetContactRequestDto } from '../../types/PetContactDTO';
+import { axiosInstance } from '../index';
 
 export default class PetContactQrCode {
   static async createPetContact (id:number, data: PetContactRequestDto): Promise<AxiosResponse> {

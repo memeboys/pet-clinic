@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Collapse } from 'antd';
 import { useParams } from 'react-router-dom';
-import PetService from '../../services/PetServices';
+import PetService from '../../services/client/PetService';
 import AuthService from '../../services/AuthService';
 import { ClientDto } from '../../types/ClientDTO';
 import classes from './PanelList.module.scss';
@@ -17,7 +17,7 @@ const PanelList: React.FC = () => {
   const [ectoParasites, setEctoParasites] = useState<EctoParasites | null>(null);
   const { petId } = useParams();
   useEffect(() => {
-    PetService.getPet(petId || '0')
+    PetService.getPet(petId || '1')
       .then(({ data }) => {
         setPetData(data);
       });
