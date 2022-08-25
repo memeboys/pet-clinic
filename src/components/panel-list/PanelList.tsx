@@ -7,19 +7,24 @@ import { ClientDto } from '../../types/ClientDTO';
 import classes from './PanelList.module.scss';
 import './AntdStyle.scss';
 import { PetDTO } from '../../types/PetsDTO';
+import EctoParasitesService from '../../services/client/EctoParasitesService';
+import { EctoParasites } from '../../types/Client/EctoParasites';
 
 const PanelList: React.FC = () => {
   const { Panel } = Collapse;
   const [petData, setPetData] = useState<PetDTO | null>(null);
   const [clientData, setClientData] = useState<ClientDto | null>(null);
+  const [ectoParasites, setEctoParasites] = useState<EctoParasites | null>(null);
   const { petId } = useParams();
-
   useEffect(() => {
     PetService.getPet(petId || '1')
       .then(({ data }) => {
         setPetData(data);
       });
-
+    EctoParasitesService.getEctoParasitesById(petId || '0')
+      .then(({ data }) => {
+        setEctoParasites(data);
+      });
     AuthService.getCurrentClient()
       .then(({ data }) => {
         setClientData(data);
@@ -117,12 +122,9 @@ const PanelList: React.FC = () => {
         </div>
       </Panel>
       <Panel className={classes.panel} showArrow={false} header="Обработка от внешних паразитов" key="6">
-        <div className={classes.panel__container}>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur
-            adipisicing elit. Harum minima earum dignissimos sequi aspernatur,
-            iure beatae ut sint non laboriosam asperiores pariatur quidem, alias enim, dolor labore tenetur. Tenetur, fuga.
-          </p>
+        <div className={classes.panel__ecto}>
+          <b>Дата вакцинации:</b>
+          {!ectoParasites ? <span>loading...</span> : ectoParasites.date}
         </div>
       </Panel>
       <Panel className={classes.panel} showArrow={false} header="Записи о репродукции" key="7">
