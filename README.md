@@ -7,7 +7,7 @@
 
 ### Стек технологий
 - React
-- Redux / Redux Toolkit (по необходимости)
+- Redux / Redux Toolkit 
 - Typescript
 - Formik + Yup
 - CSS Modules + SCSS
